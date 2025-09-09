@@ -7,7 +7,7 @@
   <meta name="description" content="High-fashion. Editorial. Global." />
   <meta name="theme-color" content="#0b0f1a" />
 
-  <!-- Open Graph / Twitter: values auto-updated on mode toggle -->
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Oluyves — Urban Fashion Model" />
   <meta property="og:description" content="High-fashion. Editorial. Global." />
   <meta property="og:type" content="website" />
@@ -53,6 +53,7 @@
   .hero{position:relative;min-height:82vh;display:grid;align-items:end}
   .hero__bg{position:absolute;inset:0;overflow:hidden}
   .hero__video{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(1.05)}
+  .hero__img{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(1.05)}
   .hero__vignette{position:absolute;inset:0;background:radial-gradient(900px 600px at 50% 30%, transparent 0, rgba(0,0,0,.45) 70%)}
   .hero__content{position:relative;padding:14vh 0 10vh}
   .hero__title{font:700 clamp(28px,5vw,56px)/1.1 Playfair Display,serif;letter-spacing:.01em;text-shadow:0 6px 30px rgba(116,224,255,.18)}
@@ -161,22 +162,33 @@
 
   <main id="main">
     <!-- HERO (Model) -->
-   <section class="hero">
-<figure class="hero-media" aria-hidden="true">
-<img src="https://drive.google.com/uc?export=view&id=1zSSbyhmZM_VO_3qz9E7N9eC9JmBUNMv_" alt="Oluyves editorial hero" loading="eager" fetchpriority="high" />
-</figure>
-<div class="hero-overlay" aria-hidden="true"></div>
-<div>
-<h2>Oluyves — Urban Fashion Model</h2>
-<p>High-fashion. Editorial. Global.</p>
-<a href="#contact" class="btn">Book for Campaigns</a>
-<a href="#" class="btn">Download Media Kit</a>
-</div>
-</section>
+    <section id="hero" class="hero section section--model" aria-label="Hero">
+      <div class="hero__bg">
+        <!-- Using your Google Drive hero image as poster (replace with MP4 later if desired) -->
+        <video class="hero__video" autoplay muted loop playsinline poster="https://drive.google.com/uc?export=view&id=1DCZJY9_5C32iwi-S1awapqsVZanH0Emo">
+          <source src="" type="video/mp4" />
+        </video>
+        <!-- If you prefer an image instead of video, uncomment this and remove the <video> above:
+        <img class="hero__img" src="https://drive.google.com/uc?export=view&id=1DCZJY9_5C32iwi-S1awapqsVZanH0Emo" alt="" />
+        -->
+        <div class="hero__vignette" aria-hidden="true"></div>
+      </div>
+      <div class="container hero__content">
+        <h1 class="hero__title">Oluyves — Urban Fashion Model</h1>
+        <p class="hero__sub">High-fashion. Editorial. Global.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary" href="#contact">Book for Campaigns</a>
+          <a class="btn btn--ghost" href="/assets/media-kit.pdf" download>Download Media Kit</a>
+        </div>
+        <div class="hero__controls">
+          <button class="btn btn--glass" id="heroModeBtn" aria-pressed="false">Switch to Crochet</button>
+        </div>
+      </div>
+    </section>
+
     <!-- HERO (Crochet) -->
     <section id="hero-crochet" class="hero section section--crochet" aria-label="Hero Crochet" hidden>
       <div class="hero__bg">
-        <!-- TODO: replace video src/poster with your assets -->
         <video class="hero__video" autoplay muted loop playsinline poster="/assets/hero-crochet-poster.webp">
           <source src="/assets/hero-crochet-loop.mp4" type="video/mp4" />
         </video>
@@ -203,7 +215,7 @@
           <p>Selected work. Lightbox opens details.</p>
         </header>
         <div class="masonry" id="modelGallery" data-gallery="model">
-          <!-- TODO: replace with at least 9 images -->
+          <!-- Replace with at least 9 images -->
           <article class="card" tabindex="0" data-type="image" data-src="/assets/model-01.webp" data-caption="Client: Placeholder • Role: Model • Year: 2024">
             <img src="/assets/model-01-thumb.webp" alt="Editorial portrait 1" loading="lazy" />
           </article>
@@ -254,7 +266,6 @@
       <div class="container">
         <p class="eyebrow">Selected collaborations & features</p>
         <ul class="logo-strip">
-          <!-- TODO: swap placeholder logos -->
           <li><img src="/assets/logo-1-gray.svg" alt="Brand 1" loading="lazy"></li>
           <li><img src="/assets/logo-2-gray.svg" alt="Brand 2" loading="lazy"></li>
           <li><img src="/assets/logo-3-gray.svg" alt="Brand 3" loading="lazy"></li>
@@ -273,15 +284,17 @@
         </article>
         <aside>
           <h3>Measurements</h3>
-          <table class="tbl"><tbody>
-            <tr><th scope="row">Height</th><td>176 cm</td></tr>
-            <tr><th scope="row">Bust</th><td>84 cm</td></tr>
-            <tr><th scope="row">Waist</th><td>63 cm</td></tr>
-            <tr><th scope="row">Hips</th><td>90 cm</td></tr>
-            <tr><th scope="row">Shoe</th><td>39 EU</td></tr>
-            <tr><th scope="row">Hair</th><td>Black</td></tr>
-            <tr><th scope="row">Eyes</th><td>Brown</td></tr>
-          </tbody></table>
+          <table class="tbl">
+            <tbody>
+              <tr><th scope="row">Height</th><td>176 cm</td></tr>
+              <tr><th scope="row">Bust</th><td>84 cm</td></tr>
+              <tr><th scope="row">Waist</th><td>63 cm</td></tr>
+              <tr><th scope="row">Hips</th><td>90 cm</td></tr>
+              <tr><th scope="row">Shoe</th><td>39 EU</td></tr>
+              <tr><th scope="row">Hair</th><td>Black</td></tr>
+              <tr><th scope="row">Eyes</th><td>Brown</td></tr>
+            </tbody>
+          </table>
           <a class="btn btn--glass" href="#contact">Request Castings / Lookbook</a>
         </aside>
       </div>
@@ -290,9 +303,18 @@
     <!-- Testimonials (Model) -->
     <section id="quotes" class="section section--model" aria-label="Testimonials">
       <div class="container quotes">
-        <figure class="quote"><blockquote>“Strong camera presence and reliable on set.”</blockquote><figcaption>— S. A., Photographer</figcaption></figure>
-        <figure class="quote"><blockquote>“Versatile. Reads direction fast.”</blockquote><figcaption>— M. K., Stylist</figcaption></figure>
-        <figure class="quote"><blockquote>“Professional from casting to delivery.”</blockquote><figcaption>— L. D., Producer</figcaption></figure>
+        <figure class="quote">
+          <blockquote>“Strong camera presence and reliable on set.”</blockquote>
+          <figcaption>— S. A., Photographer</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>“Versatile. Reads direction fast.”</blockquote>
+          <figcaption>— M. K., Stylist</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>“Professional from casting to delivery.”</blockquote>
+          <figcaption>— L. D., Producer</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -310,7 +332,7 @@
           </div>
         </header>
         <div class="masonry" id="crochetGallery" data-gallery="crochet">
-          <!-- TODO: at least 9 items with real media -->
+          <!-- Replace with at least 9 real items -->
           <article class="card" tabindex="0" data-type="image" data-category="tops" data-src="/assets/crochet-top-01.webp" data-caption="Oluyves Crochet Top • Cotton blend • Champagne / Cyan"><img src="/assets/crochet-top-01-thumb.webp" alt="Crochet top in champagne" loading="lazy" /></article>
           <article class="card" tabindex="0" data-type="video" data-category="dresses" data-src="/assets/crochet-dress-01.mp4" data-caption="Custom Dress • Made-to-measure"><img src="/assets/crochet-dress-01-thumb.webp" alt="Crochet dress preview" loading="lazy" /></article>
           <article class="card" tabindex="0" data-type="image" data-category="sets" data-src="/assets/crochet-set-01.webp" data-caption="Two-piece set • Hand-crafted"><img src="/assets/crochet-set-01-thumb.webp" alt="Crochet set preview" loading="lazy" /></article>
@@ -444,13 +466,12 @@
   </div>
 
   <script>
-  // ===== Constants (replace with real links) =====
+  // ===== Constants (add your real links) =====
   const IG_POSTS_MODEL = [
-    // Add Instagram post/reel URLs for @oluyves.
     // e.g. 'https://www.instagram.com/reel/XXXXXXXX/'
   ];
   const IG_POSTS_CROCHET = [
-    // Add crochet process reels or Google Drive links (use posters for performance).
+    // e.g. 'https://www.instagram.com/reel/YYYYYYYY/'
   ];
 
   // ===== Utilities =====
@@ -472,8 +493,8 @@
     document.querySelector('meta[property="og:title"]').setAttribute('content', document.title);
     document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
     document.querySelector('meta[property="og:image"]').setAttribute('content', isCrochet ? '/assets/og-crochet.jpg' : '/assets/og-model.jpg');
-    $('.book-model').hidden = isCrochet;
-    $('.order-crochet').hidden = !isCrochet;
+    const book = $('.book-model'), order = $('.order-crochet');
+    if(book && order){ book.hidden = isCrochet; order.hidden = !isCrochet; }
     $$('.nav__link').forEach(a=>a.classList.remove('is-active'));
   }
   function toggleMode(){
@@ -531,7 +552,9 @@
     btn.addEventListener('click', ()=>{
       $$('.filters .chip').forEach(b=>b.classList.remove('is-active'));
       btn.classList.add('is-active'); const f = btn.dataset.filter;
-      $$('#crochetGallery .card').forEach(card=>{ const ok = f==='all' || card.dataset.category===f; card.style.display = ok ? '' : 'none'; });
+      $$('#crochetGallery .card').forEach(card=>{
+        const ok = f==='all' || card.dataset.category===f; card.style.display = ok ? '' : 'none';
+      });
     });
   });
 
@@ -542,7 +565,7 @@
     slide.innerHTML = `
       <article class="reel-card">
         <video muted preload="none" playsinline poster="/assets/reel-poster.webp"></video>
-        <div class=\"ig-overlay\"><span aria-hidden>⌁</span> <a href=\"${url}\" target=\"_blank\" rel=\"noopener\">Watch on IG</a></div>
+        <div class="ig-overlay"><span aria-hidden>⌁</span> <a href="${url}" target="_blank" rel="noopener">Watch on IG</a></div>
       </article>`;
     const v = slide.querySelector('video');
     slide.addEventListener('mouseenter', ()=>{ if(!v.src) v.src = '/assets/reel-silent.mp4'; v.play().catch(()=>{}); });
@@ -561,8 +584,8 @@
 
   // ===== Forms =====
   function handleForm(form){
-    const status = form.querySelector('.form__status');
-    form.addEventListener('submit', (e)=>{
+    const status = form?.querySelector('.form__status');
+    form?.addEventListener('submit', (e)=>{
       if(!form.checkValidity()){ e.preventDefault(); status.textContent='Please fill required fields.'; return; }
       status.textContent='Sending…';
     });
