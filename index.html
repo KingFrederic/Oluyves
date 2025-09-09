@@ -245,15 +245,7 @@
           </div>
         </header>
         <div class="masonry" id="crochetGallery" data-gallery="crochet">
-          <article class="card" tabindex="0" data-type="image" data-category="tops" data-src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1200&auto=format&fit=crop" data-caption="Crochet Top • Cotton blend"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop" alt="Crochet top" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-category="dresses" data-src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?q=80&w=1200&auto=format&fit=crop" data-caption="Custom Dress • Made-to-measure"><img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?q=80&w=600&auto=format&fit=crop" alt="Crochet dress" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-category="sets" data-src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1200&auto=format&fit=crop" data-caption="Two‑piece set • Hand‑crafted"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=600&auto=format&fit=crop" alt="Crochet set" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-category="accessories" data-src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop" data-caption="Bag • Colorways available"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600&auto=format&fit=crop" alt="Crochet bag" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-category="tops" data-src="https://images.unsplash.com/photo-1503342217505-b0a15cf70489?q=80&w=1200&auto=format&fit=crop" data-caption="Top • Custom fit"><img src="https://images.unsplash.com/photo-1503342217505-b0a15cf70489?q=80&w=600&auto=format&fit=crop" alt="Crochet top 2" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-category="dresses" data-src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop" data-caption="Dress • Colorways on request"><img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=600&auto=format&fit=crop" alt="Crochet dress 2" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-category="sets" data-src="https://images.unsplash.com/photo-1542131596-dea5384842c4?q=80&w=1200&auto=format&fit=crop" data-caption="Set • Made‑to‑measure"><img src="https://images.unsplash.com/photo-1542131596-dea5384842c4?q=80&w=600&auto=format&fit=crop" alt="Crochet set 2" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-category="accessories" data-src="https://images.unsplash.com/photo-1505740106531-4243f3831c78?q=80&w=1200&auto=format&fit=crop" data-caption="Headwear • Custom sizing"><img src="https://images.unsplash.com/photo-1505740106531-4243f3831c78?q=80&w=600&auto=format&fit=crop" alt="Crochet headwear" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-category="dresses" data-src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" data-caption="Occasion dress • Delivery worldwide"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop" alt="Crochet dress 3" loading="lazy" /></article>
+          <!-- Populated from IG_POSTS_CROCHET -->
         </div>
       </div>
     </section>
@@ -365,7 +357,8 @@
     <button class="lightbox__nav lightbox__next" aria-label="Next">›</button>
   </div>
   <script>
-  const IG_POSTS_MODEL = [
+// ========== DATA ==========
+const IG_POSTS_MODEL = [
   { url: 'https://www.instagram.com/reel/DOD78rFCl6V/', poster: '/assets/ig/model/DOD78rFCl6V.webp', alt: 'Runway reel' },
   { url: 'https://www.instagram.com/reel/DNyZYP82qor/', poster: '/assets/ig/model/DNyZYP82qor.webp', alt: 'Editorial reel' },
   { url: 'https://www.instagram.com/p/DOGI_ppDPOQ/',  poster: '/assets/ig/model/DOGI_ppDPOQ.webp',  alt: 'Editorial still' },
@@ -379,114 +372,164 @@
   { url: 'https://www.instagram.com/reel/DJtR54Rs98o/', poster: '/assets/ig/model/DJtR54Rs98o.webp', alt: 'Runway reel' },
   { url: 'https://www.instagram.com/p/DJdE1QnpP1Z/', poster: '/assets/ig/model/DJdE1QnpP1Z.webp', alt: 'Editorial still' }
 ];
-  const IG_POSTS_CROCHET = [];
-  const $ = (q, sc=document) => sc.querySelector(q);
-  const $$ = (q, sc=document) => Array.from(sc.querySelectorAll(q));
-  const body = document.body;
-  const switchEl = $('#modeSwitch');
-  const heroBtn = $('#heroModeBtn');
-  const heroBtn2 = $('#heroModeBtn2');
-  function setMode(mode){
-    body.dataset.mode = mode;
-    const isCrochet = mode === 'crochet';
-    document.title = isCrochet ? 'Custom Made Crochets by Oluyves' : 'Oluyves — Urban Fashion Model';
-    const desc = isCrochet ? 'Made-to-measure pieces. Hand-crafted. Global delivery.' : 'High-fashion. Editorial. Global.';
-    document.querySelector('meta[name="description"]').setAttribute('content', desc);
-    document.querySelector('meta[property="og:title"]').setAttribute('content', document.title);
-    document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
-    const book = $('.book-model'), order = $('.order-crochet'); if(book&&order){book.hidden=isCrochet;order.hidden=!isCrochet;}
-    $$('.nav__link').forEach(a=>a.classList.remove('is-active'));
+const IG_POSTS_CROCHET = [
+  { url: 'https://www.instagram.com/p/CRCH01TopID/', poster: '/assets/ig/crochet/CRCH01TopID.webp', alt: 'Crochet Top — champagne', category: 'tops' },
+  { url: 'https://www.instagram.com/reel/CRCH02DressID/', poster: '/assets/ig/crochet/CRCH02DressID.webp', alt: 'Crochet Dress — cyan trim', category: 'dresses' },
+  { url: 'https://www.instagram.com/p/CRCH03SetID/', poster: '/assets/ig/crochet/CRCH03SetID.webp', alt: 'Two‑piece set', category: 'sets' },
+  { url: 'https://www.instagram.com/reel/CRCH04AccID/', poster: '/assets/ig/crochet/CRCH04AccID.webp', alt: 'Bag accessory', category: 'accessories' },
+  { url: 'https://www.instagram.com/p/CRCH05TopID/', poster: '/assets/ig/crochet/CRCH05TopID.webp', alt: 'Crochet top 2', category: 'tops' },
+  { url: 'https://www.instagram.com/p/CRCH06DressID/', poster: '/assets/ig/crochet/CRCH06DressID.webp', alt: 'Dress 2', category: 'dresses' },
+  { url: 'https://www.instagram.com/p/CRCH07SetID/', poster: '/assets/ig/crochet/CRCH07SetID.webp', alt: 'Set 2', category: 'sets' },
+  { url: 'https://www.instagram.com/p/CRCH08AccID/', poster: '/assets/ig/crochet/CRCH08AccID.webp', alt: 'Headwear', category: 'accessories' },
+  { url: 'https://www.instagram.com/reel/CRCH09DressID/', poster: '/assets/ig/crochet/CRCH09DressID.webp', alt: 'Occasion dress', category: 'dresses' },
+  { url: 'https://www.instagram.com/p/CRCH10TopID/', poster: '/assets/ig/crochet/CRCH10TopID.webp', alt: 'Halter top', category: 'tops' },
+  { url: 'https://www.instagram.com/reel/CRCH11SetID/', poster: '/assets/ig/crochet/CRCH11SetID.webp', alt: 'Beach set', category: 'sets' },
+  { url: 'https://www.instagram.com/p/CRCH12AccID/', poster: '/assets/ig/crochet/CRCH12AccID.webp', alt: 'Belt accessory', category: 'accessories' }
+];
+
+// ========== UTIL ==========
+const $ = (q, sc=document) => sc.querySelector(q);
+const $$ = (q, sc=document) => Array.from(sc.querySelectorAll(q));
+
+// ========== MODE ==========
+const body = document.body;
+const switchEl = $('#modeSwitch');
+$('#heroModeBtn')?.addEventListener('click', toggleMode);
+$('#heroModeBtn2')?.addEventListener('click', toggleMode);
+if(switchEl) switchEl.addEventListener('change', ()=> setMode(switchEl.checked ? 'crochet' : 'model'));
+function setMode(mode){
+  body.dataset.mode = mode;
+  const isCrochet = mode==='crochet';
+  document.title = isCrochet ? 'Custom Made Crochets by Oluyves' : 'Oluyves — Urban Fashion Model';
+  const desc = isCrochet ? 'Made-to-measure pieces. Hand-crafted. Global delivery.' : 'High-fashion. Editorial. Global.';
+  document.querySelector('meta[name="description"]').setAttribute('content', desc);
+  document.querySelector('meta[property="og:title"]').setAttribute('content', document.title);
+  document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
+  const book=$('.book-model'), order=$('.order-crochet'); if(book&&order){book.hidden=isCrochet; order.hidden=!isCrochet;}
+  $$('.nav__link').forEach(a=>a.classList.remove('is-active'));
+}
+function toggleMode(){ const next = body.dataset.mode==='model' ? 'crochet' : 'model'; setMode(next); if(switchEl) switchEl.checked = next==='crochet'; }
+
+// ========== SCROLL SPY ==========
+const spyLinks = $$('.js-spy');
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    const id = '#'+e.target.id;
+    if(e.isIntersecting){ $$('.nav__link').forEach(a=>a.classList.toggle('is-active', a.getAttribute('href')===id)); }
+  });
+},{rootMargin:'-45% 0px -50% 0px', threshold:0});
+spyLinks.forEach(a=>{ const sec = $(a.getAttribute('href')); if(sec) obs.observe(sec); });
+
+// ========== BACK TO TOP ==========
+const toTop = $('#toTop');
+window.addEventListener('scroll', ()=> toTop.classList.toggle('is-show', window.scrollY>600));
+toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+// ========== LIGHTBOX ==========
+const lb = $('#lightbox'), lbImg = $('.lightbox__img'), lbVid = $('.lightbox__video'), lbCap = $('.lightbox__cap');
+let galleryItems = [], currentIndex = -1;
+function openLB(item){
+  const type = item.dataset.type; const src = item.dataset.src; const cap = item.dataset.caption||'';
+  if(type==='video'){
+    lbVid.src = src; lbVid.hidden=false; lbImg.src=''; lbImg.hidden=true; lbVid.play().catch(()=>{});
+    lbCap.textContent = cap;
+  } else if(type==='embed'){
+    lbImg.hidden=true; lbVid.hidden=true; lbVid.pause(); lbVid.removeAttribute('src');
+    lbCap.innerHTML = `<blockquote class=\"instagram-media\" data-instgrm-permalink=\"${src}\" data-instgrm-version=\"14\" style=\"background:#000;margin:0 auto;\"></blockquote>`;
+    loadInstagramScript();
+  } else {
+    lbImg.src = src; lbImg.alt=cap; lbImg.hidden=false; lbVid.pause(); lbVid.hidden=true; lbVid.removeAttribute('src');
+    lbCap.textContent = cap;
   }
-  function toggleMode(){ const next = body.dataset.mode === 'model' ? 'crochet' : 'model'; setMode(next); if(switchEl) switchEl.checked = next==='crochet'; }
-  switchEl && switchEl.addEventListener('change', ()=> setMode(switchEl.checked ? 'crochet' : 'model'));
-  heroBtn && heroBtn.addEventListener('click', toggleMode);
-  heroBtn2 && heroBtn2.addEventListener('click', toggleMode);
-  const spyLinks = $$('.js-spy');
-  const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ const id = '#'+e.target.id; if(e.isIntersecting){ $$('.nav__link').forEach(a=>a.classList.toggle('is-active', a.getAttribute('href')===id)); } }); }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
-  spyLinks.forEach(a=>{ const sec = $(a.getAttribute('href')); if(sec) obs.observe(sec); });
-  const toTop = $('#toTop');
-  window.addEventListener('scroll', ()=>{ toTop.classList.toggle('is-show', window.scrollY>600); });
-  toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
-  const lb = $('#lightbox'), lbImg = $('.lightbox__img'), lbVid = $('.lightbox__video'), lbCap = $('.lightbox__cap');
-  let galleryItems = [], currentIndex = -1;
-  function openLB(item){
-    const type = item.dataset.type; const src = item.dataset.src; const cap = item.dataset.caption||'';
-    if(type==='video'){
-      lbVid.src = src; lbVid.hidden = false; lbImg.src = ''; lbImg.hidden = true; lbVid.play().catch(()=>{});
-      lbCap.textContent = cap;
-    } else if(type==='embed'){
-      // Render Instagram embed inside caption area
-      lbImg.hidden = true; lbVid.hidden = true; lbVid.pause(); lbVid.removeAttribute('src');
-      lbCap.innerHTML = `<blockquote class=\"instagram-media\" data-instgrm-permalink=\"${src}\" data-instgrm-version=\"14\" style=\"background:#000; margin:0 auto;\"></blockquote>`;
-      loadInstagramScript();
-    } else {
-      lbImg.src = src; lbImg.alt = cap; lbImg.hidden = false; lbVid.pause(); lbVid.hidden = true; lbVid.removeAttribute('src');
-      lbCap.textContent = cap;
-    }
-    lb.setAttribute('aria-hidden','false'); currentIndex = galleryItems.indexOf(item);
-  });} else { lbImg.src=src; lbImg.alt=cap; lbImg.hidden=false; lbVid.pause(); lbVid.hidden=true; lbVid.removeAttribute('src'); } lbCap.textContent=cap; lb.setAttribute('aria-hidden','false'); currentIndex = galleryItems.indexOf(item); }
-  function closeLB(){ lb.setAttribute('aria-hidden','true'); lbVid.pause(); }
-  function stepLB(dir){ if(currentIndex<0) return; const next=(currentIndex+dir+galleryItems.length)%galleryItems.length; openLB(galleryItems[next]); }
-  $('.lightbox__close').addEventListener('click', closeLB);
-  $('.lightbox__prev').addEventListener('click', ()=>stepLB(-1));
-  $('.lightbox__next').addEventListener('click', ()=>stepLB(1));
-  window.addEventListener('keydown', (e)=>{ if(lb.getAttribute('aria-hidden')==='false'){ if(e.key==='Escape') closeLB(); if(e.key==='ArrowRight') stepLB(1); if(e.key==='ArrowLeft') stepLB(-1);} });
-  function bindGallery(){
-    // Build model gallery from Instagram URLs with posters
-    const g = document.getElementById('modelGallery');
-    g.innerHTML = '';
-    const list = IG_POSTS_MODEL.length ? IG_POSTS_MODEL : [];
-    list.forEach((item)=>{
-      const { url, poster, alt } = typeof item === 'string' ? {url:item, poster:'', alt:'Instagram post'} : item;
-      const card = document.createElement('article');
-      card.className='card';
-      card.tabIndex=0;
-      card.dataset.type='embed';
-      card.dataset.src=url;
-      card.dataset.caption = 'Instagram — ' + url.replace('https://www.instagram.com/','');
-      const img = document.createElement('img');
-      img.loading = 'lazy';
-      img.alt = alt || 'Instagram post';
-      img.src = poster || 'https://dummyimage.com/600x800/0b0f1a/74e0ff&text=Instagram';
-      card.appendChild(img);
-      g.appendChild(card);
-    });
-    // Rebind lightbox triggers
-    galleryItems = $$('[data-gallery] .card');
-    galleryItems.forEach(item=>{
-      item.addEventListener('click', ()=>openLB(item));
-      item.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ openLB(item); }});
-    });
+  lb.setAttribute('aria-hidden','false'); currentIndex = galleryItems.indexOf(item);
+}
+function closeLB(){ lb.setAttribute('aria-hidden','true'); lbVid.pause(); }
+function stepLB(dir){ if(currentIndex<0) return; const next=(currentIndex+dir+galleryItems.length)%galleryItems.length; openLB(galleryItems[next]); }
+$('.lightbox__close').addEventListener('click', closeLB);
+$('.lightbox__prev').addEventListener('click', ()=>stepLB(-1));
+$('.lightbox__next').addEventListener('click', ()=>stepLB(1));
+window.addEventListener('keydown', (e)=>{ if(lb.getAttribute('aria-hidden')==='false'){ if(e.key==='Escape') closeLB(); if(e.key==='ArrowRight') stepLB(1); if(e.key==='ArrowLeft') stepLB(-1);} });
+
+// ========== GALLERIES ==========
+function buildModelGallery(){
+  const g = $('#modelGallery'); g.innerHTML='';
+  IG_POSTS_MODEL.forEach(({url, poster, alt})=>{
+    const card = document.createElement('article'); card.className='card'; card.tabIndex=0; card.dataset.type='embed'; card.dataset.src=url; card.dataset.caption='Instagram — '+url.replace('https://www.instagram.com/','');
+    const img = document.createElement('img'); img.loading='lazy'; img.alt=alt||'Instagram post'; img.src=poster||'https://dummyimage.com/600x800/0b0f1a/74e0ff&text=Instagram';
+    card.appendChild(img); g.appendChild(card);
   });
-    // Rebind lightbox triggers
-    galleryItems = $$('[data-gallery] .card');
-    galleryItems.forEach(item=>{
-      item.addEventListener('click', ()=>openLB(item));
-      item.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ openLB(item); }});
-    });
-  }}); }); }
-  $$('.filters .chip').forEach(btn=>{ btn.addEventListener('click', ()=>{ $$('.filters .chip').forEach(b=>b.classList.remove('is-active')); btn.classList.add('is-active'); const f=btn.dataset.filter; $$('#crochetGallery .card').forEach(card=>{ const ok=f==='all'||card.dataset.category===f; card.style.display= ok? '':'none'; }); }); });
-  let reelsSwiper, processSwiper;
-  function makeReelCard(url){ const slide=document.createElement('div'); slide.className='swiper-slide'; slide.innerHTML=`<article class="reel-card"><video muted preload="none" playsinline poster="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop"></video><div class=\"ig-overlay\"><span aria-hidden>⌁</span> <a href=\"${url}\" target=\"_blank\" rel=\"noopener\">Watch on IG</a></div></article>`; const v=slide.querySelector('video'); slide.addEventListener('mouseenter', ()=>{ if(!v.src) v.src = 'https://cdn.coverr.co/videos/coverr-fashion-model-walk-1402/1080p.mp4'; v.play().catch(()=>{}); }); slide.addEventListener('mouseleave', ()=>{ v.pause(); }); return slide; }
-  function initSwipers(){ const reelsWrapper=$('#reelsWrapper'); reelsWrapper.innerHTML=''; (IG_POSTS_MODEL.length?IG_POSTS_MODEL:Array(8).fill('https://www.instagram.com/oluyves/')).forEach(url=> reelsWrapper.appendChild(makeReelCard(url)) ); reelsSwiper = new Swiper('#reelsSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2500,disableOnInteraction:true}, pagination:{el:'#reelsSlider .swiper-pagination', clickable:true} }); const processWrapper=$('#processWrapper'); processWrapper.innerHTML=''; (IG_POSTS_CROCHET.length?IG_POSTS_CROCHET:Array(6).fill('https://www.instagram.com/oluyves/')).forEach(url=> processWrapper.appendChild(makeReelCard(url)) ); processSwiper = new Swiper('#processSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2800,disableOnInteraction:true}, pagination:{el:'#processSlider .swiper-pagination', clickable:true} }); }
-  function handleForm(form){ if(!form) return; const status=form.querySelector('.form__status'); form.addEventListener('submit',(e)=>{ if(!form.checkValidity()){ e.preventDefault(); status.textContent='Please fill required fields.'; return;} status.textContent='Sending…'; e.preventDefault(); status.textContent='Sent (demo).'; }); }
-  function updateWhatsAppLink(){ const name=(document.getElementById('o-name')||{}).value||''; const msg=encodeURIComponent(`Hi Oluyves, I'd like a custom crochet. Name: ${name}. Measurements: …`); const wa=document.getElementById('waLink'); if(wa) wa.href=`https://wa.me/2348100610718?text=${msg}`; }
-  function initGSAP(){ const isReduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches; if(isReduce || !window.gsap) return; gsap.registerPlugin(ScrollTrigger); gsap.from('.hero__title',{y:30,opacity:0,duration:.9}); gsap.from('.hero__sub',{y:20,opacity:0,delay:.1}); gsap.utils.toArray('.section').forEach(sec=>{ gsap.from(sec,{opacity:0,y:20,duration:.6,scrollTrigger:{trigger:sec,start:'top 80%'}}); }); }
-  window.addEventListener('DOMContentLoaded', ()=>{
-    bindGallery();
-    initSwipers();
-    setMode('model');
-    handleForm(document.getElementById('contactForm'));
-    handleForm(document.getElementById('orderForm'));
-    const oName=document.getElementById('o-name'); if(oName) oName.addEventListener('input', updateWhatsAppLink); updateWhatsAppLink();
-    initGSAP();
+}
+function buildCrochetGallery(){
+  const g = $('#crochetGallery'); g.innerHTML='';
+  IG_POSTS_CROCHET.forEach(({url, poster, alt, category})=>{
+    const card = document.createElement('article'); card.className='card'; card.tabIndex=0; card.dataset.type='embed'; card.dataset.src=url; card.dataset.caption='Instagram — '+url.replace('https://www.instagram.com/',''); card.dataset.category = category||'tops';
+    const img = document.createElement('img'); img.loading='lazy'; img.alt=alt||'Crochet piece'; img.src=poster||'https://dummyimage.com/600x800/0b0f1a/74e0ff&text=Instagram';
+    card.appendChild(img); g.appendChild(card);
   });
-  function loadInstagramScript(){
-    if(document.getElementById('ig-embed')){ if(window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process(); return; }
-    const s=document.createElement('script'); s.id='ig-embed'; s.async=true; s.src='//www.instagram.com/embed.js';
-    s.onload=()=>{ if(window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process(); };
-    document.body.appendChild(s);
-  } initSwipers(); setMode('model'); handleForm(document.getElementById('contactForm')); handleForm(document.getElementById('orderForm')); const oName=document.getElementById('o-name'); if(oName) oName.addEventListener('input', updateWhatsAppLink); updateWhatsAppLink(); initGSAP(); });
-  </script>
+}
+function bindLightbox(){
+  galleryItems = $$('[data-gallery] .card');
+  galleryItems.forEach(item=>{
+    item.addEventListener('click', ()=>openLB(item));
+    item.addEventListener('keydown', (e)=>{ if(e.key==='Enter') openLB(item); });
+  });
+}
+
+// ========== FILTERS ==========
+$$('.filters .chip').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    $$('.filters .chip').forEach(b=>b.classList.remove('is-active'));
+    btn.classList.add('is-active'); const f=btn.dataset.filter;
+    $$('#crochetGallery .card').forEach(card=>{ const ok=f==='all'||card.dataset.category===f; card.style.display = ok ? '' : 'none'; });
+  });
+});
+
+// ========== SWIPERS ==========
+let reelsSwiper, processSwiper;
+function makeReelCard(url){
+  const slide=document.createElement('div'); slide.className='swiper-slide';
+  slide.innerHTML=`<article class=\"reel-card\"><video muted preload=\"none\" playsinline poster=\"https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop\"></video><div class=\"ig-overlay\"><span aria-hidden>⌁</span> <a href=\"${url}\" target=\"_blank\" rel=\"noopener\">Watch on IG</a></div></article>`;
+  const v=slide.querySelector('video');
+  slide.addEventListener('mouseenter', ()=>{ if(!v.src) v.src='https://cdn.coverr.co/videos/coverr-fashion-model-walk-1402/1080p.mp4'; v.play().catch(()=>{}); });
+  slide.addEventListener('mouseleave', ()=> v.pause());
+  return slide;
+}
+function initSwipers(){
+  const reelsWrapper=$('#reelsWrapper'); reelsWrapper.innerHTML='';
+  (IG_POSTS_MODEL.length?IG_POSTS_MODEL:Array(8).fill({url:'https://www.instagram.com/oluyves/'})).forEach(item=> reelsWrapper.appendChild(makeReelCard(item.url||item)) );
+  reelsSwiper = new Swiper('#reelsSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2500,disableOnInteraction:true}, pagination:{el:'#reelsSlider .swiper-pagination', clickable:true} });
+
+  const processWrapper=$('#processWrapper'); processWrapper.innerHTML='';
+  (IG_POSTS_CROCHET.length?IG_POSTS_CROCHET:Array(6).fill({url:'https://www.instagram.com/oluyves/'})).forEach(item=> processWrapper.appendChild(makeReelCard(item.url||item)) );
+  processSwiper = new Swiper('#processSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2800,disableOnInteraction:true}, pagination:{el:'#processSlider .swiper-pagination', clickable:true} });
+}
+
+// ========== FORMS ==========
+function handleForm(form){ if(!form) return; const status=form.querySelector('.form__status'); form.addEventListener('submit',(e)=>{ if(!form.checkValidity()){ e.preventDefault(); status.textContent='Please fill required fields.'; return;} status.textContent='Sending…'; e.preventDefault(); status.textContent='Sent (demo).'; }); }
+function updateWhatsAppLink(){ const name=($('#o-name')||{}).value||''; const msg=encodeURIComponent(`Hi Oluyves, I'd like a custom crochet. Name: ${name}. Measurements: …`); const wa=$('#waLink'); if(wa) wa.href=`https://wa.me/2348100610718?text=${msg}`; }
+
+// ========== GSAP ==========
+function initGSAP(){ const isReduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches; if(isReduce || !window.gsap) return; gsap.registerPlugin(ScrollTrigger); gsap.from('.hero__title',{y:30,opacity:0,duration:.9}); gsap.from('.hero__sub',{y:20,opacity:0,delay:.1}); gsap.utils.toArray('.section').forEach(sec=>{ gsap.from(sec,{opacity:0,y:20,duration:.6,scrollTrigger:{trigger:sec,start:'top 80%'}}); }); }
+
+// ========== INIT ==========
+window.addEventListener('DOMContentLoaded', ()=>{
+  buildModelGallery();
+  buildCrochetGallery();
+  bindLightbox();
+  initSwipers();
+  setMode('model');
+  handleForm($('#contactForm')); handleForm($('#orderForm'));
+  $('#o-name')?.addEventListener('input', updateWhatsAppLink); updateWhatsAppLink();
+  initGSAP();
+});
+
+// ========== IG EMBED ==========
+function loadInstagramScript(){
+  if($('#ig-embed')){ if(window.instgrm?.Embeds) window.instgrm.Embeds.process(); return; }
+  const s=document.createElement('script'); s.id='ig-embed'; s.async=true; s.src='//www.instagram.com/embed.js';
+  s.onload=()=>{ if(window.instgrm?.Embeds) window.instgrm.Embeds.process(); };
+  document.body.appendChild(s);
+}
+</script>
 </body>
 </html>
