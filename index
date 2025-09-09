@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OLUYVES — Model • Crochet Studio</title>
+  <meta name="description" content="Oluyves — International urban fashion model. Custom crochet studio. Bookings, reels, and lookbook." />
+  <meta name="theme-color" content="#0b0f1c" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f1c; --ink:#eaf1f8; --muted:#aab6c3;
+      --glass:rgba(255,255,255,.06); --bdr:rgba(255,255,255,.14);
+      --accent:#86e0f9; --accent2:#f7d37b; --rose:#ff7aa2;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink); background:
+      radial-gradient(1600px 800px at 10% -10%, rgba(134,224,249,.12), transparent 60%),
+      radial-gradient(1200px 600px at 120% 20%, rgba(247,211,123,.10), transparent 60%),
+      linear-gradient(180deg,#0b0f1c,#0a0f1b 40%,#0b1224);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1200px; margin:0 auto; padding:0 20px}
+    .glass{background:var(--glass); border:1px solid var(--bdr); backdrop-filter:blur(18px) saturate(120%); border-radius:24px}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.8rem 1.1rem; border:1px solid var(--bdr); border-radius:14px; background:rgba(255,255,255,.06); transition:transform .12s ease, box-shadow .25s ease}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 16px 40px rgba(134,224,249,.28), 0 0 160px rgba(247,211,123,.18)}
+
+    /* NAV */
+    nav.top{position:fixed; inset:0 0 auto 0; height:68px; z-index:50; backdrop-filter:blur(16px);
+      background:rgba(8,12,24,.45); border-bottom:1px solid var(--bdr)}
+    nav.top .row{height:68px; display:flex; align-items:center; justify-content:space-between}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800}
+    .dot{width:10px; height:10px; border-radius:50%; background:var(--accent)}
+    .seg{display:flex; gap:8px}
+    .toggle{display:inline-grid; grid-auto-flow:column; gap:6px; background:rgba(255,255,255,.06); border:1px solid var(--bdr); border-radius:12px; padding:4px}
+    .toggle button{padding:.45rem .8rem; border:0; border-radius:10px; color:#cfe5f1; background:transparent; cursor:pointer}
+    .toggle button.active{background:rgba(134,224,249,.2); color:#fff}
+
+    /* HERO */
+    header.hero{position:relative; min-height:110svh; display:grid; place-items:center; text-align:center; overflow:hidden}
+    #bgvid{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.12; filter:grayscale(.1) contrast(1.2) saturate(1.2)}
+    .hero-inner{position:relative; z-index:1}
+    .over{display:inline-flex; gap:10px; align-items:center; padding:.35rem .6rem; border:1px solid var(--bdr); border-radius:999px; background:rgba(255,255,255,.06); color:#d6e1ec}
+    .title{font-family:"Playfair Display", serif; font-weight:700; letter-spacing:.5px; font-size:clamp(2.4rem,6vw,5rem); margin:14px 0 8px}
+    .sub{color:var(--muted); max-width:46ch; margin:0 auto}
+    .cta{margin-top:14px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+
+    /* SECTION */
+    section{padding:36px 0}
+    h2{font-family:"Playfair Display", serif; font-weight:700; font-size:2rem; margin:0 0 10px}
+    .grid{display:grid; gap:18px}
+    .cols-2{grid-template-columns:1.1fr 1fr}
+    .cols-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:980px){.cols-2{grid-template-columns:1fr}.cols-3{grid-template-columns:1fr}}
+
+    /* CARDS + MEDIA */
+    .card{padding:18px}
+    .frame{position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--bdr)}
+    .frame img, .frame video{display:block; width:100%; height:100%; object-fit:cover}
+    .badge{display:inline-flex; gap:8px; align-items:center; padding:.35rem .6rem;
+      background:linear-gradient(90deg, rgba(134,224,249,.22), rgba(255,122,162,.20)); border:1px solid var(--bdr); border-radius:12px}
+
+    /* SLIDER */
+    .slider{position:relative}
+    .track{display:grid; grid-auto-flow:column; grid-auto-columns:80%; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px}
+    .track::-webkit-scrollbar{height:8px}
+    .track::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18); border-radius:999px}
+    .slide{scroll-snap-align:center}
+    .navbtn{position:absolute; top:50%; transform:translateY(-50%); border:1px solid var(--bdr); background:rgba(255,255,255,.08); border-radius:999px; width:44px; height:44px; display:grid; place-items:center; cursor:pointer}
+    .navbtn:hover{background:rgba(255,255,255,.14)}
+    .prev{left:-8px} .next{right:-8px}
+
+    /* CROCHET MODE — palette + visibility */
+    body.business .model-only{display:none}
+    body:not(.business) .business-only{display:none}
+    body.business{
+      --accent:#f7d37b; --accent2:#86e0f9;
+      background:
+        radial-gradient(1600px 800px at 10% -10%, rgba(247,211,123,.16), transparent 60%),
+        radial-gradient(1200px 600px at 120% 20%, rgba(134,224,249,.10), transparent 60%),
+        linear-gradient(180deg,#0b0f1c,#0a0f1b 40%,#121527);
+    }
+
+    /* CONTACT */
+    .contact-list{display:grid; gap:10px}
+    .contact-list a{display:flex; align-items:center; gap:10px; padding:.8rem 1rem; border:1px solid var(--bdr); border-radius:12px; background:rgba(255,255,255,.06)}
+    .contact-list a:hover{box-shadow:0 10px 34px rgba(134,224,249,.25)}
+    footer{border-top:1px solid var(--bdr); padding:22px 0; color:#c9d3de}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="top">
+    <div class="wrap row">
+      <div class="brand"><span class="dot"></span> OLUYVES</div>
+      <div class="seg">
+        <div class="toggle" role="tablist" aria-label="Site Mode">
+          <button id="mode-model" class="active" role="tab" aria-selected="true">Model</button>
+          <button id="mode-biz" role="tab" aria-selected="false">Crochet Studio</button>
+        </div>
+        <a class="btn" href="mailto:oluyves@gmail.com">Email</a>
+        <a class="btn" href="tel:+2348100610718">Call</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <!-- Optional cinematic background video (replace URL if desired) -->
+    <video id="bgvid" autoplay muted loop playsinline poster="">
+      <source src="https://cdn.coverr.co/videos/coverr-vogue-walk-6002/1080p.mp4" type="video/mp4" />
+    </video>
+
+    <div class="hero-inner wrap">
+      <div class="over">Urban Fashion • International • EN/FR</div>
+      <h1 class="title">Oluyves</h1>
+      <p class="sub model-only">Female urban fashion model. Editorial. Street luxury. Ready for global brand deals and campaigns.</p>
+      <p class="sub business-only">Custom hand-made crochet pieces. Elevated texture. Tailored silhouettes. Limited drops.</p>
+      <div class="cta">
+        <a class="btn" href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn" href="mailto:oluyves@gmail.com">Bookings</a>
+        <a class="btn business-only" href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener">Crochet Catalog</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- LOOKBOOK (Model) -->
+  <section class="wrap model-only">
+    <div class="grid cols-2">
+      <div class="glass card">
+        <div class="badge"><span style="width:10px;height:10px;border-radius:50%;background:var(--accent)"></span> Lookbook</div>
+        <h2>Editorial • Street Luxury</h2>
+        <p>Selected stills and reels embedded from Instagram. Swap the permalinks below with your posts.</p>
+        <p style="opacity:.8; font-size:.95rem">Tip: On Instagram, copy link from your post → paste in the blocks below → it renders automatically.</p>
+      </div>
+      <div class="glass card">
+        <h2>Stats</h2>
+        <ul style="list-style:disc; padding-left:18px; line-height:1.9; opacity:.95">
+          <li>Height, measurements, shoe size (add)</li>
+          <li>Based in (add) • Travels worldwide</li>
+          <li>Commercial • Editorial • Runway</li>
+          <li>Available for: Brand campaigns, catalog, music videos</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Instagram embeds (Replace data-instgrm-permalink with your post URLs) -->
+    <div class="grid cols-3" style="margin-top:18px">
+      <div class="frame">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CxKqDemo123/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
+      </div>
+      <div class="frame">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CoReelDemo456/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
+      </div>
+      <div class="frame">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CjPhotoDemo789/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT REEL SLIDER (Model) -->
+  <section class="wrap model-only">
+    <div class="slider glass card">
+      <h2 style="margin-bottom:6px">Highlight Reel</h2>
+      <div class="track" id="modelTrack">
+        <div class="slide frame">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CrAnotherDemo001/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
+        </div>
+        <div class="slide frame">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CmAnotherDemo002/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
+        </div>
+        <div class="slide frame">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/ClAnotherDemo003/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
+        </div>
+      </div>
+      <button class="navbtn prev" aria-label="Previous" data-track="modelTrack">‹</button>
+      <button class="navbtn next" aria-label="Next" data-track="modelTrack">›</button>
+    </div>
+  </section>
+
+  <!-- CROCHET STUDIO -->
+  <section class="wrap business-only">
+    <div class="glass card">
+      <div class="badge"><span style="width:10px;height:10px;border-radius:50%;background:var(--accent2)"></span> Crochet Studio</div>
+      <h2>Custom Crochet • Made to Measure</h2>
+      <p>Hand-crafted pieces. Premium yarns. Urban silhouettes. International shipping.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px">
+        <a class="btn" href="mailto:oluyves@gmail.com?subject=Crochet%20Order">Order by Email</a>
+        <a class="btn" href="tel:+2348100610718">Call / WhatsApp</a>
+        <a class="btn" href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener">Instagram Catalog</a>
+      </div>
+    </div>
+
+    <!-- Product Slider -->
+    <div class="slider glass card" style="margin-top:18px">
+      <h2 style="margin-bottom:6px">Drops & Bestsellers</h2>
+      <div class="track" id="bizTrack">
+        <!-- Replace images below with your crochet shots or embed Instagram posts like above -->
+        <div class="slide frame"><img src="https://images.unsplash.com/photo-1581291519195-ef11498d1cf5?q=80&w=1600&auto=format&fit=crop" alt="Crochet look 1"></div>
+        <div class="slide frame"><img src="https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=1600&auto=format&fit=crop" alt="Crochet look 2"></div>
+        <div class="slide frame"><img src="https://images.unsplash.com/photo-1605733513569-1f25b550ab3b?q=80&w=1600&auto=format&fit=crop" alt="Crochet look 3"></div>
+      </div>
+      <button class="navbtn prev" aria-label="Previous" data-track="bizTrack">‹</button>
+      <button class="navbtn next" aria-label="Next" data-track="bizTrack">›</button>
+    </div>
+
+    <!-- Instagram embeds for studio (swap with your crochet post URLs) -->
+    <div class="grid cols-3" style="margin-top:18px">
+      <div class="frame">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CcCrochetDemo101/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
+      </div>
+      <div class="frame">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CdCrochetDemo102/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
+      </div>
+      <div class="frame">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CeCrochetDemo103/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT + CONTACT -->
+  <section class="wrap">
+    <div class="grid cols-2">
+      <div class="glass card">
+        <h2>About</h2>
+        <p class="model-only">Urban fashion model with a strong editorial presence. Comfortable on street sets, studio sets, and runways. Open to global brand partnerships.</p>
+        <p class="business-only">Custom crochet studio focused on premium textures and tailored fits. Limited pieces per drop. Made to measure on request.</p>
+      </div>
+      <div class="glass card">
+        <h2>Bookings</h2>
+        <div class="contact-list">
+          <a href="mailto:oluyves@gmail.com"><span>✉️</span> oluyves@gmail.com</a>
+          <a href="tel:+2348100610718"><span>📞</span> +234 810 061 0718</a>
+          <a href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener"><span>📷</span> @oluyves</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <small>© <span id="y"></span> OLUYVES</small>
+      <div style="display:flex; gap:10px">
+        <a class="btn" href="mailto:oluyves@gmail.com">Email</a>
+        <a class="btn" href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Instagram embed loader -->
+  <script async src="//www.instagram.com/embed.js"></script>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Mode toggle
+    const body = document.body;
+    const modelBtn = document.getElementById('mode-model');
+    const bizBtn = document.getElementById('mode-biz');
+
+    function setMode(business){
+      if(business){
+        body.classList.add('business');
+        modelBtn.classList.remove('active'); modelBtn.setAttribute('aria-selected','false');
+        bizBtn.classList.add('active'); bizBtn.setAttribute('aria-selected','true');
+      } else {
+        body.classList.remove('business');
+        bizBtn.classList.remove('active'); bizBtn.setAttribute('aria-selected','false');
+        modelBtn.classList.add('active'); modelBtn.setAttribute('aria-selected','true');
+      }
+      // Reprocess Instagram embeds after toggle (safe no-op if already processed)
+      if(window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+    }
+    modelBtn.addEventListener('click',()=>setMode(false));
+    bizBtn.addEventListener('click',()=>setMode(true));
+
+    // Sliders
+    function nudge(trackId, dir=1){
+      const el = document.getElementById(trackId);
+      const w = el.getBoundingClientRect().width * 0.9;
+      el.scrollBy({left: w * dir, behavior:'smooth'});
+    }
+    document.querySelectorAll('.navbtn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.getAttribute('data-track');
+        nudge(id, btn.classList.contains('next') ? 1 : -1);
+      });
+    });
+
+    // If Instagram script loads after initial paint, ensure processing
+    window.addEventListener('load', ()=>{
+      if(window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+    });
+  </script>
+</body>
+</html>
