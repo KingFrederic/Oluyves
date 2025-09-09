@@ -161,27 +161,19 @@
 
   <main id="main">
     <!-- HERO (Model) -->
-    <section id="hero" class="hero section section--model" aria-label="Hero">
-      <div class="hero__bg">
-        <!-- TODO: replace video src/poster with your assets -->
-        <video class="hero__video" autoplay muted loop playsinline poster="/assets/hero-model-poster.webp">
-          <source src="/assets/hero-model-loop.mp4" type="video/mp4" />
-        </video>
-        <div class="hero__vignette" aria-hidden="true"></div>
-      </div>
-      <div class="container hero__content">
-        <h1 class="hero__title">Oluyves — Urban Fashion Model</h1>
-        <p class="hero__sub">High-fashion. Editorial. Global.</p>
-        <div class="hero__ctas">
-          <a class="btn btn--primary" href="#contact">Book for Campaigns</a>
-          <a class="btn btn--ghost" href="/assets/media-kit.pdf" download>Download Media Kit</a>
-        </div>
-        <div class="hero__controls">
-          <button class="btn btn--glass" id="heroModeBtn" aria-pressed="false">Switch to Crochet</button>
-        </div>
-      </div>
-    </section>
-
+    <section class="hero">
+<figure class="hero-media" aria-hidden="true">
+<!-- TODO: replace DRIVE_FILE_ID_HERO_MODEL with your Google Drive file id -->
+<img src="https://drive.google.com/uc?export=view&id=DRIVE_FILE_ID_HERO_MODEL" alt="" loading="eager" fetchpriority="high" />
+</figure>
+<div class="hero-overlay" aria-hidden="true"></div>
+<div>
+<h2>Oluyves — Urban Fashion Model</h2>
+<p>High-fashion. Editorial. Global.</p>
+<a href="#contact" class="btn">Book for Campaigns</a>
+<a href="#" class="btn">Download Media Kit</a>
+</div>
+</section>
     <!-- HERO (Crochet) -->
     <section id="hero-crochet" class="hero section section--crochet" aria-label="Hero Crochet" hidden>
       <div class="hero__bg">
