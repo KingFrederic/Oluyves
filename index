@@ -1,0 +1,90 @@
+<!doctype html>
+function bindGallery(){
+galleryItems = $$('[data-gallery] .card');
+galleryItems.forEach(item=>{
+item.addEventListener('click', ()=>openLB(item));
+item.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ openLB(item); }});
+});
+}
+
+
+// ===== Filters (Crochet) =====
+$$('.filters .chip').forEach(btn=>{
+btn.addEventListener('click', ()=>{
+$$('.filters .chip').forEach(b=>b.classList.remove('is-active'));
+btn.classList.add('is-active'); const f = btn.dataset.filter;
+$$('#crochetGallery .card').forEach(card=>{ const ok = f==='all' || card.dataset.category===f; card.style.display = ok ? '' : 'none'; });
+});
+});
+
+
+// ===== Swipers =====
+let reelsSwiper, processSwiper;
+function makeReelCard(url){
+const slide = document.createElement('div'); slide.className='swiper-slide';
+slide.innerHTML = `
+<article class="reel-card">
+<video muted preload="none" playsinline poster="/assets/reel-poster.webp"></video>
+<div class=\"ig-overlay\"><span aria-hidden>⌁</span> <a href=\"${url}\" target=\"_blank\" rel=\"noopener\">Watch on IG</a></div>
+</article>`;
+const v = slide.querySelector('video');
+slide.addEventListener('mouseenter', ()=>{ if(!v.src) v.src = '/assets/reel-silent.mp4'; v.play().catch(()=>{}); });
+slide.addEventListener('mouseleave', ()=>{ v.pause(); });
+return slide;
+}
+function initSwipers(){
+const reelsWrapper = $('#reelsWrapper'); reelsWrapper.innerHTML='';
+(IG_POSTS_MODEL.length?IG_POSTS_MODEL:Array(8).fill('https://www.instagram.com/oluyves/')).forEach(url=> reelsWrapper.appendChild(makeReelCard(url)) );
+reelsSwiper = new Swiper('#reelsSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2500,disableOnInteraction:true}, pagination:{el:'#reelsSlider .swiper-pagination', clickable:true} });
+
+
+const processWrapper = $('#processWrapper'); processWrapper.innerHTML='';
+(IG_POSTS_CROCHET.length?IG_POSTS_CROCHET:Array(6).fill('https://www.instagram.com/oluyves/')).forEach(url=> processWrapper.appendChild(makeReelCard(url)) );
+processSwiper = new Swiper('#processSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2800,disableOnInteraction:true}, pagination:{el:'#processSlider .swiper-pagination', clickable:true} });
+}
+
+
+// ===== Forms =====
+function handleForm(form){
+const status = form.querySelector('.form__status');
+form.addEventListener('submit', (e)=>{
+if(!form.checkValidity()){ e.preventDefault(); status.textContent='Please fill required fields.'; return; }
+status.textContent='Sending…';
+});
+}
+
+
+// ===== WhatsApp deep link =====
+function updateWhatsAppLink(){
+const name = (document.getElementById('o-name')||{}).value||'';
+const msg = encodeURIComponent(`Hi Oluyves, I'd like a custom crochet. Name: ${name}. Measurements: …`);
+const wa = document.getElementById('waLink'); if(wa) wa.href = `https://wa.me/2348100610718?text=${msg}`;
+}
+
+
+// ===== GSAP choreography =====
+function initGSAP(){
+const isReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(isReduce || !window.gsap) return;
+gsap.registerPlugin(ScrollTrigger);
+gsap.from('.hero__title', {y:30, opacity:0, duration:.9});
+gsap.from('.hero__sub', {y:20, opacity:0, delay:.1});
+gsap.utils.toArray('.section').forEach((sec)=>{
+gsap.from(sec, {opacity:0, y:20, duration:.6, scrollTrigger:{trigger:sec,start:'top 80%'}});
+});
+}
+
+
+// ===== Init =====
+window.addEventListener('DOMContentLoaded', ()=>{
+bindGallery();
+initSwipers();
+setMode('model');
+handleForm(document.getElementById('contactForm'));
+handleForm(document.getElementById('orderForm'));
+const oName = document.getElementById('o-name'); if(oName) oName.addEventListener('input', updateWhatsAppLink); updateWhatsAppLink();
+initGSAP();
+});
+</script>
+</body>
+</html>
