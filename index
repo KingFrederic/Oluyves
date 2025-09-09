@@ -1,304 +1,613 @@
+```html
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OLUYVES — Model • Crochet Studio</title>
-  <meta name="description" content="Oluyves — International urban fashion model. Custom crochet studio. Bookings, reels, and lookbook." />
-  <meta name="theme-color" content="#0b0f1c" />
+  <title>Oluyves — Urban Fashion Model</title>
+  <meta name="description" content="High-fashion. Editorial. Global." />
+  <meta name="theme-color" content="#0b0f1a" />
+
+  <!-- Open Graph / Twitter: values auto-updated on mode toggle -->
+  <meta property="og:title" content="Oluyves — Urban Fashion Model" />
+  <meta property="og:description" content="High-fashion. Editorial. Global." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og-model.jpg" />
+  <meta property="og:url" content="https://your-vercel-domain.vercel.app" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Swiper & GSAP (CDN) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 
   <style>
-    :root{
-      --bg:#0b0f1c; --ink:#eaf1f8; --muted:#aab6c3;
-      --glass:rgba(255,255,255,.06); --bdr:rgba(255,255,255,.14);
-      --accent:#86e0f9; --accent2:#f7d37b; --rose:#ff7aa2;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; color:var(--ink); background:
-      radial-gradient(1600px 800px at 10% -10%, rgba(134,224,249,.12), transparent 60%),
-      radial-gradient(1200px 600px at 120% 20%, rgba(247,211,123,.10), transparent 60%),
-      linear-gradient(180deg,#0b0f1c,#0a0f1b 40%,#0b1224);
-      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;
-    }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:1200px; margin:0 auto; padding:0 20px}
-    .glass{background:var(--glass); border:1px solid var(--bdr); backdrop-filter:blur(18px) saturate(120%); border-radius:24px}
-    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.8rem 1.1rem; border:1px solid var(--bdr); border-radius:14px; background:rgba(255,255,255,.06); transition:transform .12s ease, box-shadow .25s ease}
-    .btn:hover{transform:translateY(-1px); box-shadow:0 16px 40px rgba(134,224,249,.28), 0 0 160px rgba(247,211,123,.18)}
-
-    /* NAV */
-    nav.top{position:fixed; inset:0 0 auto 0; height:68px; z-index:50; backdrop-filter:blur(16px);
-      background:rgba(8,12,24,.45); border-bottom:1px solid var(--bdr)}
-    nav.top .row{height:68px; display:flex; align-items:center; justify-content:space-between}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:800}
-    .dot{width:10px; height:10px; border-radius:50%; background:var(--accent)}
-    .seg{display:flex; gap:8px}
-    .toggle{display:inline-grid; grid-auto-flow:column; gap:6px; background:rgba(255,255,255,.06); border:1px solid var(--bdr); border-radius:12px; padding:4px}
-    .toggle button{padding:.45rem .8rem; border:0; border-radius:10px; color:#cfe5f1; background:transparent; cursor:pointer}
-    .toggle button.active{background:rgba(134,224,249,.2); color:#fff}
-
-    /* HERO */
-    header.hero{position:relative; min-height:110svh; display:grid; place-items:center; text-align:center; overflow:hidden}
-    #bgvid{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.12; filter:grayscale(.1) contrast(1.2) saturate(1.2)}
-    .hero-inner{position:relative; z-index:1}
-    .over{display:inline-flex; gap:10px; align-items:center; padding:.35rem .6rem; border:1px solid var(--bdr); border-radius:999px; background:rgba(255,255,255,.06); color:#d6e1ec}
-    .title{font-family:"Playfair Display", serif; font-weight:700; letter-spacing:.5px; font-size:clamp(2.4rem,6vw,5rem); margin:14px 0 8px}
-    .sub{color:var(--muted); max-width:46ch; margin:0 auto}
-    .cta{margin-top:14px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
-
-    /* SECTION */
-    section{padding:36px 0}
-    h2{font-family:"Playfair Display", serif; font-weight:700; font-size:2rem; margin:0 0 10px}
-    .grid{display:grid; gap:18px}
-    .cols-2{grid-template-columns:1.1fr 1fr}
-    .cols-3{grid-template-columns:repeat(3,1fr)}
-    @media (max-width:980px){.cols-2{grid-template-columns:1fr}.cols-3{grid-template-columns:1fr}}
-
-    /* CARDS + MEDIA */
-    .card{padding:18px}
-    .frame{position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--bdr)}
-    .frame img, .frame video{display:block; width:100%; height:100%; object-fit:cover}
-    .badge{display:inline-flex; gap:8px; align-items:center; padding:.35rem .6rem;
-      background:linear-gradient(90deg, rgba(134,224,249,.22), rgba(255,122,162,.20)); border:1px solid var(--bdr); border-radius:12px}
-
-    /* SLIDER */
-    .slider{position:relative}
-    .track{display:grid; grid-auto-flow:column; grid-auto-columns:80%; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px}
-    .track::-webkit-scrollbar{height:8px}
-    .track::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18); border-radius:999px}
-    .slide{scroll-snap-align:center}
-    .navbtn{position:absolute; top:50%; transform:translateY(-50%); border:1px solid var(--bdr); background:rgba(255,255,255,.08); border-radius:999px; width:44px; height:44px; display:grid; place-items:center; cursor:pointer}
-    .navbtn:hover{background:rgba(255,255,255,.14)}
-    .prev{left:-8px} .next{right:-8px}
-
-    /* CROCHET MODE — palette + visibility */
-    body.business .model-only{display:none}
-    body:not(.business) .business-only{display:none}
-    body.business{
-      --accent:#f7d37b; --accent2:#86e0f9;
-      background:
-        radial-gradient(1600px 800px at 10% -10%, rgba(247,211,123,.16), transparent 60%),
-        radial-gradient(1200px 600px at 120% 20%, rgba(134,224,249,.10), transparent 60%),
-        linear-gradient(180deg,#0b0f1c,#0a0f1b 40%,#121527);
-    }
-
-    /* CONTACT */
-    .contact-list{display:grid; gap:10px}
-    .contact-list a{display:flex; align-items:center; gap:10px; padding:.8rem 1rem; border:1px solid var(--bdr); border-radius:12px; background:rgba(255,255,255,.06)}
-    .contact-list a:hover{box-shadow:0 10px 34px rgba(134,224,249,.25)}
-    footer{border-top:1px solid var(--bdr); padding:22px 0; color:#c9d3de}
+  :root{--bg:#0b0f1a;--txt:#f2f5f9;--cyan:#74e0ff;--champ:#f7d9a6;--glass:rgba(255,255,255,.06);--stroke:rgba(255,255,255,.14)}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(1200px 1200px at 50% -10%, rgba(116,224,255,.12), transparent 60%), var(--bg);color:var(--txt);font:400 16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  img,video{max-width:100%;display:block}
+  .container{width:min(1200px,92%);margin-inline:auto}
+  .skip-link{position:absolute;left:-999px;top:-999px}
+  .skip-link:focus{left:1rem;top:1rem;background:#000;color:#fff;padding:.5rem 1rem}
+  /* Nav */
+  .nav{position:sticky;top:0;z-index:30;backdrop-filter:saturate(160%) blur(10px);background:linear-gradient(180deg, rgba(11,15,26,.72), rgba(11,15,26,.32));border-bottom:1px solid var(--stroke)}
+  .nav__inner{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0}
+  .brand{font:700 18px/1 Playfair Display,serif;letter-spacing:.12em;color:var(--txt);text-decoration:none}
+  .nav__links{display:flex;gap:1rem}
+  .nav__link{color:var(--txt);opacity:.8;text-decoration:none;padding:.5rem .25rem;border-bottom:2px solid transparent}
+  .nav__link.is-active{border-color:var(--cyan)}
+  /* Toggle */
+  .mode-toggle{display:flex;align-items:center;gap:.5rem}
+  .toggle{display:inline-grid;grid-template-columns:auto 36px auto;align-items:center;gap:.5rem}
+  .toggle__label{font-size:.85rem;color:#cdd3dc}
+  .toggle__knob{position:relative;width:36px;height:22px;border-radius:22px;background:var(--glass);border:1px solid var(--stroke)}
+  .toggle__knob::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:linear-gradient(180deg,#1d2738,#0b0f1a);box-shadow:0 0 0 2px rgba(116,224,255,.25)}
+  #modeSwitch:checked + .toggle .toggle__knob::after{left:16px}
+  /* Hero */
+  .hero{position:relative;min-height:82vh;display:grid;align-items:end}
+  .hero__bg{position:absolute;inset:0;overflow:hidden}
+  .hero__video{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(1.05)}
+  .hero__vignette{position:absolute;inset:0;background:radial-gradient(900px 600px at 50% 30%, transparent 0, rgba(0,0,0,.45) 70%)}
+  .hero__content{position:relative;padding:14vh 0 10vh}
+  .hero__title{font:700 clamp(28px,5vw,56px)/1.1 Playfair Display,serif;letter-spacing:.01em;text-shadow:0 6px 30px rgba(116,224,255,.18)}
+  .hero__sub{opacity:.85;margin:.75rem 0 1.25rem}
+  .hero__ctas{display:flex;gap:.75rem;flex-wrap:wrap}
+  .hero__controls{margin-top:1rem}
+  /* Buttons */
+  .btn{display:inline-block;border:1px solid var(--stroke);padding:.7rem 1rem;border-radius:999px;text-decoration:none;color:var(--txt);transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
+  .btn--primary{background:linear-gradient(180deg, rgba(116,224,255,.18), rgba(247,217,166,.18));box-shadow:0 8px 40px rgba(116,224,255,.18) inset, 0 8px 26px rgba(247,217,166,.12)}
+  .btn--ghost{background:rgba(255,255,255,.02)}
+  .btn--glass{background:var(--glass)}
+  .btn:hover{transform:translateY(-1px)}
+  /* Sections */
+  .section{padding:64px 0;border-top:1px solid var(--stroke)}
+  .section__head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1.25rem}
+  .section h2{font:700 28px/1.2 Playfair Display,serif}
+  .eyebrow{letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+  /* Grid */
+  .grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem}
+  @media (max-width: 900px){.grid-2{grid-template-columns:1fr;}}
+  /* Masonry */
+  .masonry{columns:1;column-gap:12px}
+  @media (min-width:640px){.masonry{columns:2}}
+  @media (min-width:1024px){.masonry{columns:3}}
+  .card{break-inside:avoid;margin-bottom:12px;border-radius:18px;overflow:hidden;position:relative;background:var(--glass);border:1px solid var(--stroke);box-shadow:0 10px 40px rgba(0,0,0,.25)}
+  .card img{width:100%;height:auto;display:block;filter:saturate(1.05)}
+  .card::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(116,224,255,.08), inset 0 -40px 80px rgba(11,15,26,.6);opacity:0;transition:opacity .25s ease}
+  .card:hover::after{opacity:1}
+  .card:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+  /* Swiper */
+  .swiper{--swiper-theme-color: var(--cyan);padding:6px}
+  .swiper .swiper-slide{width:280px;max-width:80vw}
+  .reel-card{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--stroke);background:var(--glass)}
+  .reel-card video{width:100%;height:420px;object-fit:cover}
+  .reel-card .ig-overlay{position:absolute;right:10px;top:10px;padding:.35rem .6rem;border-radius:999px;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:flex;gap:.4rem;align-items:center}
+  .reel-card .ig-overlay a{color:#fff;text-decoration:none;font-size:.85rem}
+  /* Logos */
+  .logo-strip{display:flex;gap:2.5rem;justify-content:center;align-items:center;flex-wrap:wrap;opacity:.85}
+  .logo-strip img{filter:grayscale(1);opacity:.8;transition:filter .2s, opacity .2s}
+  .logo-strip img:hover{filter:none;opacity:1}
+  /* Tables */
+  .tbl{width:100%;border-collapse:separate;border-spacing:0;margin:.5rem 0;overflow:hidden;border-radius:12px}
+  .tbl th,.tbl td{padding:.6rem .8rem;border-bottom:1px solid var(--stroke)}
+  .tbl th{font-weight:600;text-align:left}
+  /* Quotes */
+  .quotes{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .quote{padding:1rem;border:1px solid var(--stroke);border-radius:16px;background:var(--glass)}
+  .quote blockquote{margin:0 0 .5rem 0;font-style:italic}
+  /* Forms */
+  .form{display:grid;gap:.9rem}
+  .f{display:grid;gap:.4rem}
+  input,textarea{background:rgba(255,255,255,.03);border:1px solid var(--stroke);border-radius:12px;color:var(--txt);padding:.7rem}
+  input:focus,textarea:focus{outline:2px solid var(--cyan);outline-offset:2px}
+  .form__actions{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+  .form__status{font-size:.9rem;opacity:.9}
+  .contact-card{padding:1rem;border-radius:16px;border:1px solid var(--stroke)}
+  /* Footer */
+  .footer{border-top:1px solid var(--stroke);padding:28px 0;margin-top:20px}
+  .footer__inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .to-top{border-radius:999px;border:1px solid var(--stroke);background:var(--glass);color:var(--txt);padding:.5rem .7rem;opacity:0;transition:opacity .3s}
+  .to-top.is-show{opacity:1}
+  /* Lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(6,8,14,.85);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:100}
+  .lightbox[aria-hidden="false"]{display:flex}
+  .lightbox__figure{max-width:min(1000px,92vw)}
+  .lightbox__img,.lightbox__video{width:100%;border-radius:16px;border:1px solid var(--stroke);background:#000}
+  .lightbox__cap{margin-top:.6rem;text-align:center;opacity:.9}
+  .lightbox__close,.lightbox__nav{position:absolute;top:24px;background:var(--glass);border:1px solid var(--stroke);color:var(--txt);padding:.4rem .6rem;border-radius:999px}
+  .lightbox__close{right:24px}
+  .lightbox__prev{left:24px;top:50%;transform:translateY(-50%)}
+  .lightbox__next{right:24px;top:50%;transform:translateY(-50%)}
+  /* Glass helpers */
+  .glass{background:var(--glass);border:1px solid var(--stroke);border-radius:16px;padding:1rem}
+  /* Mode visibility */
+  .section--model{display:block}
+  .section--crochet{display:block}
+  body[data-mode="crochet"] .section--model{display:none}
+  body[data-mode="model"] .section--crochet{display:none}
+  /* Accessibility & Motion */
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
   </style>
 </head>
-<body>
-  <!-- NAV -->
-  <nav class="top">
-    <div class="wrap row">
-      <div class="brand"><span class="dot"></span> OLUYVES</div>
-      <div class="seg">
-        <div class="toggle" role="tablist" aria-label="Site Mode">
-          <button id="mode-model" class="active" role="tab" aria-selected="true">Model</button>
-          <button id="mode-biz" role="tab" aria-selected="false">Crochet Studio</button>
-        </div>
-        <a class="btn" href="mailto:oluyves@gmail.com">Email</a>
-        <a class="btn" href="tel:+2348100610718">Call</a>
-      </div>
-    </div>
-  </nav>
+<body data-mode="model">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- HERO -->
-  <header class="hero">
-    <!-- Optional cinematic background video (replace URL if desired) -->
-    <video id="bgvid" autoplay muted loop playsinline poster="">
-      <source src="https://cdn.coverr.co/videos/coverr-vogue-walk-6002/1080p.mp4" type="video/mp4" />
-    </video>
-
-    <div class="hero-inner wrap">
-      <div class="over">Urban Fashion • International • EN/FR</div>
-      <h1 class="title">Oluyves</h1>
-      <p class="sub model-only">Female urban fashion model. Editorial. Street luxury. Ready for global brand deals and campaigns.</p>
-      <p class="sub business-only">Custom hand-made crochet pieces. Elevated texture. Tailored silhouettes. Limited drops.</p>
-      <div class="cta">
-        <a class="btn" href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener">Instagram</a>
-        <a class="btn" href="mailto:oluyves@gmail.com">Bookings</a>
-        <a class="btn business-only" href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener">Crochet Catalog</a>
+  <!-- Sticky Nav -->
+  <header class="nav" role="banner" aria-label="Primary">
+    <div class="nav__inner container">
+      <a class="brand" href="#hero" aria-label="Oluyves home">OLUYVES</a>
+      <nav class="nav__links" aria-label="Sections">
+        <a href="#runway" class="nav__link js-spy">Runway</a>
+        <a href="#reels" class="nav__link js-spy">Reels</a>
+        <a href="#press" class="nav__link js-spy">Press</a>
+        <a href="#contact" class="nav__link js-spy">Contact</a>
+      </nav>
+      <div class="mode-toggle" role="group" aria-label="Mode toggle">
+        <input type="checkbox" id="modeSwitch" aria-label="Toggle Crochet Mode" />
+        <label for="modeSwitch" class="toggle">
+          <span class="toggle__label toggle__label--left">Model</span>
+          <span class="toggle__knob" aria-hidden="true"></span>
+          <span class="toggle__label toggle__label--right">Crochet</span>
+        </label>
       </div>
     </div>
   </header>
 
-  <!-- LOOKBOOK (Model) -->
-  <section class="wrap model-only">
-    <div class="grid cols-2">
-      <div class="glass card">
-        <div class="badge"><span style="width:10px;height:10px;border-radius:50%;background:var(--accent)"></span> Lookbook</div>
-        <h2>Editorial • Street Luxury</h2>
-        <p>Selected stills and reels embedded from Instagram. Swap the permalinks below with your posts.</p>
-        <p style="opacity:.8; font-size:.95rem">Tip: On Instagram, copy link from your post → paste in the blocks below → it renders automatically.</p>
+  <main id="main">
+    <!-- HERO (Model) -->
+    <section id="hero" class="hero section section--model" aria-label="Hero">
+      <div class="hero__bg">
+        <!-- TODO: replace video src/poster with your assets -->
+        <video class="hero__video" autoplay muted loop playsinline poster="/assets/hero-model-poster.webp">
+          <source src="/assets/hero-model-loop.mp4" type="video/mp4" />
+        </video>
+        <div class="hero__vignette" aria-hidden="true"></div>
       </div>
-      <div class="glass card">
-        <h2>Stats</h2>
-        <ul style="list-style:disc; padding-left:18px; line-height:1.9; opacity:.95">
-          <li>Height, measurements, shoe size (add)</li>
-          <li>Based in (add) • Travels worldwide</li>
-          <li>Commercial • Editorial • Runway</li>
-          <li>Available for: Brand campaigns, catalog, music videos</li>
+      <div class="container hero__content">
+        <h1 class="hero__title">Oluyves — Urban Fashion Model</h1>
+        <p class="hero__sub">High-fashion. Editorial. Global.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary" href="#contact">Book for Campaigns</a>
+          <a class="btn btn--ghost" href="/assets/media-kit.pdf" download>Download Media Kit</a>
+        </div>
+        <div class="hero__controls">
+          <button class="btn btn--glass" id="heroModeBtn" aria-pressed="false">Switch to Crochet</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO (Crochet) -->
+    <section id="hero-crochet" class="hero section section--crochet" aria-label="Hero Crochet" hidden>
+      <div class="hero__bg">
+        <!-- TODO: replace video src/poster with your assets -->
+        <video class="hero__video" autoplay muted loop playsinline poster="/assets/hero-crochet-poster.webp">
+          <source src="/assets/hero-crochet-loop.mp4" type="video/mp4" />
+        </video>
+        <div class="hero__vignette" aria-hidden="true"></div>
+      </div>
+      <div class="container hero__content">
+        <h1 class="hero__title">Custom Made Crochets by Oluyves</h1>
+        <p class="hero__sub">Made-to-measure pieces. Hand-crafted. Global delivery.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary" href="#order">Order Custom</a>
+          <a class="btn btn--ghost" href="/assets/crochet-lookbook.pdf" download>View Lookbook</a>
+        </div>
+        <div class="hero__controls">
+          <button class="btn btn--glass" id="heroModeBtn2" aria-pressed="true">Switch to Model</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Runway & Editorial (Model) -->
+    <section id="runway" class="section section--model" aria-label="Runway & Editorial">
+      <div class="container">
+        <header class="section__head">
+          <h2>Runway & Editorial</h2>
+          <p>Selected work. Lightbox opens details.</p>
+        </header>
+        <div class="masonry" id="modelGallery" data-gallery="model">
+          <!-- TODO: replace with at least 9 images -->
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-01.webp" data-caption="Client: Placeholder • Role: Model • Year: 2024">
+            <img src="/assets/model-01-thumb.webp" alt="Editorial portrait 1" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-02.webp" data-caption="Client: Placeholder • Role: Model • Year: 2024">
+            <img src="/assets/model-02-thumb.webp" alt="Editorial portrait 2" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-03.webp" data-caption="Runway • Year: 2023">
+            <img src="/assets/model-03-thumb.webp" alt="Runway still 1" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-04.webp" data-caption="Editorial • Year: 2023">
+            <img src="/assets/model-04-thumb.webp" alt="Editorial portrait 3" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-05.webp" data-caption="Campaign • Year: 2023">
+            <img src="/assets/model-05-thumb.webp" alt="Campaign look 1" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-06.webp" data-caption="Lookbook • Year: 2022">
+            <img src="/assets/model-06-thumb.webp" alt="Lookbook shot" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-07.webp" data-caption="Editorial • Year: 2022">
+            <img src="/assets/model-07-thumb.webp" alt="Editorial portrait 4" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-08.webp" data-caption="Runway • Year: 2022">
+            <img src="/assets/model-08-thumb.webp" alt="Runway still 2" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-09.webp" data-caption="Campaign • Year: 2021">
+            <img src="/assets/model-09-thumb.webp" alt="Campaign look 2" loading="lazy" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reels Slider (Model) -->
+    <section id="reels" class="section section--model" aria-label="Reels">
+      <div class="container">
+        <header class="section__head">
+          <h2>Reels</h2>
+          <p>Hover to preview. Open to watch on Instagram.</p>
+        </header>
+        <div class="swiper" id="reelsSlider" aria-label="Instagram reels slider">
+          <div class="swiper-wrapper" id="reelsWrapper"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Collab / Press Strip (Model) -->
+    <section id="press" class="section section--model" aria-label="Brand collaborations and press">
+      <div class="container">
+        <p class="eyebrow">Selected collaborations & features</p>
+        <ul class="logo-strip">
+          <!-- TODO: swap placeholder logos -->
+          <li><img src="/assets/logo-1-gray.svg" alt="Brand 1" loading="lazy"></li>
+          <li><img src="/assets/logo-2-gray.svg" alt="Brand 2" loading="lazy"></li>
+          <li><img src="/assets/logo-3-gray.svg" alt="Brand 3" loading="lazy"></li>
+          <li><img src="/assets/logo-4-gray.svg" alt="Brand 4" loading="lazy"></li>
+          <li><img src="/assets/logo-5-gray.svg" alt="Brand 5" loading="lazy"></li>
         </ul>
       </div>
-    </div>
+    </section>
 
-    <!-- Instagram embeds (Replace data-instgrm-permalink with your post URLs) -->
-    <div class="grid cols-3" style="margin-top:18px">
-      <div class="frame">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CxKqDemo123/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
+    <!-- About + Measurements (Model) -->
+    <section id="about" class="section section--model" aria-label="About and measurements">
+      <div class="container grid-2">
+        <article>
+          <h2>About</h2>
+          <p>Oluyves is a Lagos‑based, global fashion model with an urban editorial edge. She works across campaigns, runway, and lookbooks with a focus on clean silhouettes and strong presence on camera. Available for international bookings.</p>
+        </article>
+        <aside>
+          <h3>Measurements</h3>
+          <table class="tbl"><tbody>
+            <tr><th scope="row">Height</th><td>176 cm</td></tr>
+            <tr><th scope="row">Bust</th><td>84 cm</td></tr>
+            <tr><th scope="row">Waist</th><td>63 cm</td></tr>
+            <tr><th scope="row">Hips</th><td>90 cm</td></tr>
+            <tr><th scope="row">Shoe</th><td>39 EU</td></tr>
+            <tr><th scope="row">Hair</th><td>Black</td></tr>
+            <tr><th scope="row">Eyes</th><td>Brown</td></tr>
+          </tbody></table>
+          <a class="btn btn--glass" href="#contact">Request Castings / Lookbook</a>
+        </aside>
       </div>
-      <div class="frame">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CoReelDemo456/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
-      </div>
-      <div class="frame">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CjPhotoDemo789/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- HIGHLIGHT REEL SLIDER (Model) -->
-  <section class="wrap model-only">
-    <div class="slider glass card">
-      <h2 style="margin-bottom:6px">Highlight Reel</h2>
-      <div class="track" id="modelTrack">
-        <div class="slide frame">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CrAnotherDemo001/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
-        </div>
-        <div class="slide frame">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CmAnotherDemo002/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
-        </div>
-        <div class="slide frame">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/ClAnotherDemo003/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
-        </div>
+    <!-- Testimonials (Model) -->
+    <section id="quotes" class="section section--model" aria-label="Testimonials">
+      <div class="container quotes">
+        <figure class="quote"><blockquote>“Strong camera presence and reliable on set.”</blockquote><figcaption>— S. A., Photographer</figcaption></figure>
+        <figure class="quote"><blockquote>“Versatile. Reads direction fast.”</blockquote><figcaption>— M. K., Stylist</figcaption></figure>
+        <figure class="quote"><blockquote>“Professional from casting to delivery.”</blockquote><figcaption>— L. D., Producer</figcaption></figure>
       </div>
-      <button class="navbtn prev" aria-label="Previous" data-track="modelTrack">‹</button>
-      <button class="navbtn next" aria-label="Next" data-track="modelTrack">›</button>
-    </div>
-  </section>
+    </section>
 
-  <!-- CROCHET STUDIO -->
-  <section class="wrap business-only">
-    <div class="glass card">
-      <div class="badge"><span style="width:10px;height:10px;border-radius:50%;background:var(--accent2)"></span> Crochet Studio</div>
-      <h2>Custom Crochet • Made to Measure</h2>
-      <p>Hand-crafted pieces. Premium yarns. Urban silhouettes. International shipping.</p>
-      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px">
-        <a class="btn" href="mailto:oluyves@gmail.com?subject=Crochet%20Order">Order by Email</a>
-        <a class="btn" href="tel:+2348100610718">Call / WhatsApp</a>
-        <a class="btn" href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener">Instagram Catalog</a>
-      </div>
-    </div>
-
-    <!-- Product Slider -->
-    <div class="slider glass card" style="margin-top:18px">
-      <h2 style="margin-bottom:6px">Drops & Bestsellers</h2>
-      <div class="track" id="bizTrack">
-        <!-- Replace images below with your crochet shots or embed Instagram posts like above -->
-        <div class="slide frame"><img src="https://images.unsplash.com/photo-1581291519195-ef11498d1cf5?q=80&w=1600&auto=format&fit=crop" alt="Crochet look 1"></div>
-        <div class="slide frame"><img src="https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=1600&auto=format&fit=crop" alt="Crochet look 2"></div>
-        <div class="slide frame"><img src="https://images.unsplash.com/photo-1605733513569-1f25b550ab3b?q=80&w=1600&auto=format&fit=crop" alt="Crochet look 3"></div>
-      </div>
-      <button class="navbtn prev" aria-label="Previous" data-track="bizTrack">‹</button>
-      <button class="navbtn next" aria-label="Next" data-track="bizTrack">›</button>
-    </div>
-
-    <!-- Instagram embeds for studio (swap with your crochet post URLs) -->
-    <div class="grid cols-3" style="margin-top:18px">
-      <div class="frame">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CcCrochetDemo101/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
-      </div>
-      <div class="frame">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CdCrochetDemo102/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
-      </div>
-      <div class="frame">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CeCrochetDemo103/" data-instgrm-version="14" style="margin:0 auto; width:100%; max-width:540px;"></blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT + CONTACT -->
-  <section class="wrap">
-    <div class="grid cols-2">
-      <div class="glass card">
-        <h2>About</h2>
-        <p class="model-only">Urban fashion model with a strong editorial presence. Comfortable on street sets, studio sets, and runways. Open to global brand partnerships.</p>
-        <p class="business-only">Custom crochet studio focused on premium textures and tailored fits. Limited pieces per drop. Made to measure on request.</p>
-      </div>
-      <div class="glass card">
-        <h2>Bookings</h2>
-        <div class="contact-list">
-          <a href="mailto:oluyves@gmail.com"><span>✉️</span> oluyves@gmail.com</a>
-          <a href="tel:+2348100610718"><span>📞</span> +234 810 061 0718</a>
-          <a href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener"><span>📷</span> @oluyves</a>
+    <!-- CROCHET: Product Gallery -->
+    <section id="products" class="section section--crochet" aria-label="Crochet products" hidden>
+      <div class="container">
+        <header class="section__head">
+          <h2>Collections</h2>
+          <div class="filters" role="tablist" aria-label="Product filters">
+            <button class="chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="chip" data-filter="tops" role="tab">Tops</button>
+            <button class="chip" data-filter="dresses" role="tab">Dresses</button>
+            <button class="chip" data-filter="sets" role="tab">Sets</button>
+            <button class="chip" data-filter="accessories" role="tab">Accessories</button>
+          </div>
+        </header>
+        <div class="masonry" id="crochetGallery" data-gallery="crochet">
+          <!-- TODO: at least 9 items with real media -->
+          <article class="card" tabindex="0" data-type="image" data-category="tops" data-src="/assets/crochet-top-01.webp" data-caption="Oluyves Crochet Top • Cotton blend • Champagne / Cyan"><img src="/assets/crochet-top-01-thumb.webp" alt="Crochet top in champagne" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="video" data-category="dresses" data-src="/assets/crochet-dress-01.mp4" data-caption="Custom Dress • Made-to-measure"><img src="/assets/crochet-dress-01-thumb.webp" alt="Crochet dress preview" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="sets" data-src="/assets/crochet-set-01.webp" data-caption="Two‑piece set • Hand‑crafted"><img src="/assets/crochet-set-01-thumb.webp" alt="Crochet set preview" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="accessories" data-src="/assets/crochet-acc-01.webp" data-caption="Bag • Colorways available"><img src="/assets/crochet-acc-01-thumb.webp" alt="Crochet accessory bag" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="tops" data-src="/assets/crochet-top-02.webp" data-caption="Top • Custom fit"><img src="/assets/crochet-top-02-thumb.webp" alt="Crochet top 2" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="dresses" data-src="/assets/crochet-dress-02.webp" data-caption="Dress • Colorways on request"><img src="/assets/crochet-dress-02-thumb.webp" alt="Crochet dress 2" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="sets" data-src="/assets/crochet-set-02.webp" data-caption="Set • Made‑to‑measure"><img src="/assets/crochet-set-02-thumb.webp" alt="Crochet set 2" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="accessories" data-src="/assets/crochet-acc-02.webp" data-caption="Headwear • Custom sizing"><img src="/assets/crochet-acc-02-thumb.webp" alt="Crochet headwear" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="dresses" data-src="/assets/crochet-dress-03.webp" data-caption="Occasion dress • Delivery worldwide"><img src="/assets/crochet-dress-03-thumb.webp" alt="Crochet dress 3" loading="lazy" /></article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
-      <small>© <span id="y"></span> OLUYVES</small>
-      <div style="display:flex; gap:10px">
-        <a class="btn" href="mailto:oluyves@gmail.com">Email</a>
-        <a class="btn" href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener">Instagram</a>
+    <!-- CROCHET: Process Slider -->
+    <section id="process" class="section section--crochet" aria-label="Process reels" hidden>
+      <div class="container">
+        <header class="section__head"><h2>Process</h2><p>From yarn to piece.</p></header>
+        <div class="swiper" id="processSlider" aria-label="Process reels slider">
+          <div class="swiper-wrapper" id="processWrapper"></div>
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
+    </section>
+
+    <!-- CROCHET: Sizing & Customization -->
+    <section id="sizing" class="section section--crochet" aria-label="Sizing and customization" hidden>
+      <div class="container grid-2">
+        <article>
+          <h2>Sizing & Customization</h2>
+          <ol class="steps">
+            <li>Measure — follow the guide.</li>
+            <li>Choose yarn — colorways and texture.</li>
+            <li>Timeline — confirm production and shipping.</li>
+            <li>Delivery — tracked worldwide.</li>
+          </ol>
+          <div class="infographic" aria-hidden="true"></div>
+        </article>
+        <aside>
+          <h3>Size Guide</h3>
+          <table class="tbl"><thead><tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hips</th></tr></thead><tbody>
+            <tr><th scope="row">S</th><td>80–86</td><td>60–66</td><td>86–92</td></tr>
+            <tr><th scope="row">M</th><td>86–92</td><td>66–72</td><td>92–98</td></tr>
+            <tr><th scope="row">L</th><td>92–98</td><td>72–78</td><td>98–104</td></tr>
+          </tbody></table>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACT (Shared) -->
+    <section id="contact" class="section section--shared" aria-label="Contact and booking">
+      <div class="container grid-2">
+        <article>
+          <h2>Contact / Booking</h2>
+          <form id="contactForm" class="form" action="https://formspree.io/f/your-id" method="POST" novalidate>
+            <div class="f"><label for="name">Name</label><input id="name" name="name" type="text" required /></div>
+            <div class="f"><label for="email">Email</label><input id="email" name="email" type="email" required /></div>
+            <div class="f"><label for="brand">Brand</label><input id="brand" name="brand" type="text" /></div>
+            <div class="f"><label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea></div>
+            <div class="form__actions">
+              <button class="btn btn--primary" type="submit">Send</button>
+              <a class="btn btn--ghost" href="/assets/press-kit.pdf" download>Press Kit</a>
+            </div>
+            <p class="form__status" role="status" aria-live="polite"></p>
+          </form>
+        </article>
+        <aside>
+          <div class="contact-card glass">
+            <h3>Direct</h3>
+            <ul class="contact-list">
+              <li><a href="tel:+2348100610718">+234 810 061 0718</a></li>
+              <li><a href="mailto:oluyves@gmail.com">oluyves@gmail.com</a></li>
+              <li><a href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener">@oluyves</a></li>
+            </ul>
+            <div class="contact-cta">
+              <a class="btn btn--primary book-model" href="#contact">Book Now</a>
+              <a class="btn btn--primary order-crochet" href="#order" hidden>Order Custom</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CROCHET: Order CTA -->
+    <section id="order" class="section section--crochet" aria-label="Order custom" hidden>
+      <div class="container grid-2">
+        <article>
+          <h2>Order Custom</h2>
+          <form id="orderForm" class="form" action="https://formspree.io/f/your-id" method="POST" novalidate>
+            <div class="f"><label for="o-name">Name</label><input id="o-name" name="name" type="text" required /></div>
+            <div class="f"><label for="o-email">Email</label><input id="o-email" name="email" type="email" required /></div>
+            <div class="f"><label for="o-whatsapp">WhatsApp</label><input id="o-whatsapp" name="whatsapp" type="tel" placeholder="+234…" /></div>
+            <div class="f"><label for="o-measure">Measurements</label><textarea id="o-measure" name="measurements" rows="4" placeholder="Bust, Waist, Hips, Height…" required></textarea></div>
+            <div class="f"><label for="o-notes">Notes</label><textarea id="o-notes" name="notes" rows="4" placeholder="Colorways, yarn, timeline"></textarea></div>
+            <div class="form__actions">
+              <button class="btn btn--primary" type="submit">Submit Order</button>
+              <a class="btn btn--ghost" id="waLink" href="#" target="_blank" rel="noopener">WhatsApp Us</a>
+            </div>
+            <p class="form__status" role="status" aria-live="polite"></p>
+          </form>
+        </article>
+        <aside>
+          <div class="glass"><h3>Made‑to‑Measure</h3><p>Each piece is crafted to your measurements. Production windows vary by item.</p></div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <p>Lagos / Global</p>
+      <nav class="footer__contact" aria-label="Footer contact bar">
+        <a href="tel:+2348100610718">+234 810 061 0718</a>
+        <a href="mailto:oluyves@gmail.com">oluyves@gmail.com</a>
+        <a href="https://www.instagram.com/oluyves/" target="_blank" rel="noopener">@oluyves</a>
+      </nav>
+      <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
     </div>
   </footer>
 
-  <!-- Instagram embed loader -->
-  <script async src="//www.instagram.com/embed.js"></script>
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="lightbox__close" aria-label="Close">×</button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" alt="" />
+      <video class="lightbox__video" controls playsinline hidden></video>
+      <figcaption class="lightbox__cap"></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__prev" aria-label="Previous">‹</button>
+    <button class="lightbox__nav lightbox__next" aria-label="Next">›</button>
+  </div>
 
   <script>
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
+  // ===== Constants (replace with real links) =====
+  const IG_POSTS_MODEL = [
+    // Add Instagram post/reel URLs for @oluyves.
+    // e.g. 'https://www.instagram.com/reel/XXXXXXXX/'
+  ];
+  const IG_POSTS_CROCHET = [
+    // Add crochet process reels or Google Drive links (use posters for performance).
+  ];
 
-    // Mode toggle
-    const body = document.body;
-    const modelBtn = document.getElementById('mode-model');
-    const bizBtn = document.getElementById('mode-biz');
+  // ===== Utilities =====
+  const $ = (q, sc=document) => sc.querySelector(q);
+  const $$ = (q, sc=document) => Array.from(sc.querySelectorAll(q));
 
-    function setMode(business){
-      if(business){
-        body.classList.add('business');
-        modelBtn.classList.remove('active'); modelBtn.setAttribute('aria-selected','false');
-        bizBtn.classList.add('active'); bizBtn.setAttribute('aria-selected','true');
-      } else {
-        body.classList.remove('business');
-        bizBtn.classList.remove('active'); bizBtn.setAttribute('aria-selected','false');
-        modelBtn.classList.add('active'); modelBtn.setAttribute('aria-selected','true');
-      }
-      // Reprocess Instagram embeds after toggle (safe no-op if already processed)
-      if(window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
-    }
-    modelBtn.addEventListener('click',()=>setMode(false));
-    bizBtn.addEventListener('click',()=>setMode(true));
+  // ===== Mode Toggle =====
+  const body = document.body;
+  const switchEl = $('#modeSwitch');
+  const heroBtn = $('#heroModeBtn');
+  const heroBtn2 = $('#heroModeBtn2');
 
-    // Sliders
-    function nudge(trackId, dir=1){
-      const el = document.getElementById(trackId);
-      const w = el.getBoundingClientRect().width * 0.9;
-      el.scrollBy({left: w * dir, behavior:'smooth'});
-    }
-    document.querySelectorAll('.navbtn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const id = btn.getAttribute('data-track');
-        nudge(id, btn.classList.contains('next') ? 1 : -1);
-      });
+  function setMode(mode){
+    body.dataset.mode = mode; // 'model' | 'crochet'
+    const isCrochet = mode === 'crochet';
+    document.title = isCrochet ? 'Custom Made Crochets by Oluyves' : 'Oluyves — Urban Fashion Model';
+    const desc = isCrochet ? 'Made-to-measure pieces. Hand-crafted. Global delivery.' : 'High-fashion. Editorial. Global.';
+    document.querySelector('meta[name="description"]').setAttribute('content', desc);
+    document.querySelector('meta[property="og:title"]').setAttribute('content', document.title);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
+    document.querySelector('meta[property="og:image"]').setAttribute('content', isCrochet ? '/assets/og-crochet.jpg' : '/assets/og-model.jpg');
+    $('.book-model').hidden = isCrochet;
+    $('.order-crochet').hidden = !isCrochet;
+    $$('.nav__link').forEach(a=>a.classList.remove('is-active'));
+  }
+  function toggleMode(){
+    const next = body.dataset.mode === 'model' ? 'crochet' : 'model';
+    setMode(next);
+    if(switchEl) switchEl.checked = next === 'crochet';
+  }
+  switchEl && switchEl.addEventListener('change', ()=> setMode(switchEl.checked ? 'crochet' : 'model'));
+  heroBtn && heroBtn.addEventListener('click', toggleMode);
+  heroBtn2 && heroBtn2.addEventListener('click', toggleMode);
+
+  // ===== Scroll spy =====
+  const spyLinks = $$('.js-spy');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      const id = '#'+e.target.id;
+      if(e.isIntersecting){ $$('.nav__link').forEach(a=>a.classList.toggle('is-active', a.getAttribute('href')===id)); }
     });
+  }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+  spyLinks.forEach(a=>{ const sec = $(a.getAttribute('href')); if(sec) obs.observe(sec); });
 
-    // If Instagram script loads after initial paint, ensure processing
-    window.addEventListener('load', ()=>{
-      if(window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+  // ===== Back to top =====
+  const toTop = $('#toTop');
+  window.addEventListener('scroll', ()=>{ toTop.classList.toggle('is-show', window.scrollY>600); });
+  toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+  // ===== Lightbox =====
+  const lb = $('#lightbox'), lbImg = $('.lightbox__img'), lbVid = $('.lightbox__video'), lbCap = $('.lightbox__cap');
+  let galleryItems = [], currentIndex = -1;
+  function openLB(item){
+    const type = item.dataset.type; const src = item.dataset.src; const cap = item.dataset.caption||'';
+    if(type==='video'){
+      lbVid.src = src; lbVid.hidden = false; lbImg.src = ''; lbImg.hidden = true; lbVid.play().catch(()=>{});
+    } else {
+      lbImg.src = src; lbImg.alt = cap; lbImg.hidden = false; lbVid.pause(); lbVid.hidden = true; lbVid.removeAttribute('src');
+    }
+    lbCap.textContent = cap; lb.setAttribute('aria-hidden','false'); currentIndex = galleryItems.indexOf(item);
+  }
+  function closeLB(){ lb.setAttribute('aria-hidden','true'); lbVid.pause(); }
+  function stepLB(dir){ if(currentIndex<0) return; const next = (currentIndex + dir + galleryItems.length) % galleryItems.length; openLB(galleryItems[next]); }
+  $('.lightbox__close').addEventListener('click', closeLB);
+  $('.lightbox__prev').addEventListener('click', ()=>stepLB(-1));
+  $('.lightbox__next').addEventListener('click', ()=>stepLB(1));
+  window.addEventListener('keydown', (e)=>{ if(lb.getAttribute('aria-hidden')==='false'){ if(e.key==='Escape') closeLB(); if(e.key==='ArrowRight') stepLB(1); if(e.key==='ArrowLeft') stepLB(-1);} });
+  function bindGallery(){
+    galleryItems = $$('[data-gallery] .card');
+    galleryItems.forEach(item=>{
+      item.addEventListener('click', ()=>openLB(item));
+      item.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ openLB(item); }});
     });
+  }
+
+  // ===== Filters (Crochet) =====
+  $$('.filters .chip').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      $$('.filters .chip').forEach(b=>b.classList.remove('is-active'));
+      btn.classList.add('is-active'); const f = btn.dataset.filter;
+      $$('#crochetGallery .card').forEach(card=>{ const ok = f==='all' || card.dataset.category===f; card.style.display = ok ? '' : 'none'; });
+    });
+  });
+
+  // ===== Swipers =====
+  let reelsSwiper, processSwiper;
+  function makeReelCard(url){
+    const slide = document.createElement('div'); slide.className='swiper-slide';
+    slide.innerHTML = `
+      <article class="reel-card">
+        <video muted preload="none" playsinline poster="/assets/reel-poster.webp"></video>
+        <div class=\"ig-overlay\"><span aria-hidden>⌁</span> <a href=\"${url}\" target=\"_blank\" rel=\"noopener\">Watch on IG</a></div>
+      </article>`;
+    const v = slide.querySelector('video');
+    slide.addEventListener('mouseenter', ()=>{ if(!v.src) v.src = '/assets/reel-silent.mp4'; v.play().catch(()=>{}); });
+    slide.addEventListener('mouseleave', ()=>{ v.pause(); });
+    return slide;
+  }
+  function initSwipers(){
+    const reelsWrapper = $('#reelsWrapper'); reelsWrapper.innerHTML='';
+    (IG_POSTS_MODEL.length?IG_POSTS_MODEL:Array(8).fill('https://www.instagram.com/oluyves/')).forEach(url=> reelsWrapper.appendChild(makeReelCard(url)) );
+    reelsSwiper = new Swiper('#reelsSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2500,disableOnInteraction:true}, pagination:{el:'#reelsSlider .swiper-pagination', clickable:true} });
+
+    const processWrapper = $('#processWrapper'); processWrapper.innerHTML='';
+    (IG_POSTS_CROCHET.length?IG_POSTS_CROCHET:Array(6).fill('https://www.instagram.com/oluyves/')).forEach(url=> processWrapper.appendChild(makeReelCard(url)) );
+    processSwiper = new Swiper('#processSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2800,disableOnInteraction:true}, pagination:{el:'#processSlider .swiper-pagination', clickable:true} });
+  }
+
+  // ===== Forms =====
+  function handleForm(form){
+    const status = form.querySelector('.form__status');
+    form.addEventListener('submit', (e)=>{
+      if(!form.checkValidity()){ e.preventDefault(); status.textContent='Please fill required fields.'; return; }
+      status.textContent='Sending…';
+    });
+  }
+
+  // ===== WhatsApp deep link =====
+  function updateWhatsAppLink(){
+    const name = (document.getElementById('o-name')||{}).value||'';
+    const msg = encodeURIComponent(`Hi Oluyves, I'd like a custom crochet. Name: ${name}. Measurements: …`);
+    const wa = document.getElementById('waLink'); if(wa) wa.href = `https://wa.me/2348100610718?text=${msg}`;
+  }
+
+  // ===== GSAP choreography =====
+  function initGSAP(){
+    const isReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(isReduce || !window.gsap) return;
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.hero__title', {y:30, opacity:0, duration:.9});
+    gsap.from('.hero__sub', {y:20, opacity:0, delay:.1});
+    gsap.utils.toArray('.section').forEach((sec)=>{
+      gsap.from(sec, {opacity:0, y:20, duration:.6, scrollTrigger:{trigger:sec,start:'top 80%'}});
+    });
+  }
+
+  // ===== Init =====
+  window.addEventListener('DOMContentLoaded', ()=>{
+    bindGallery();
+    initSwipers();
+    setMode('model');
+    handleForm(document.getElementById('contactForm'));
+    handleForm(document.getElementById('orderForm'));
+    const oName = document.getElementById('o-name'); if(oName) oName.addEventListener('input', updateWhatsAppLink); updateWhatsAppLink();
+    initGSAP();
+  });
   </script>
 </body>
 </html>
+```
