@@ -177,16 +177,8 @@
           <h2>Runway & Editorial</h2>
           <p>Selected work. Lightbox opens details.</p>
         </header>
-        <div class="masonry" id="modelGallery" data-gallery="model">
-          <article class="card" tabindex="0" data-type="image" data-src="https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1200&auto=format&fit=crop" data-caption="Editorial • Year: 2024"><img src="https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=600&auto=format&fit=crop" alt="Editorial 1" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-src="https://images.unsplash.com/photo-1541739432-32aa4a1a2e20?q=80&w=1200&auto=format&fit=crop" data-caption="Runway • Year: 2023"><img src="https://images.unsplash.com/photo-1541739432-32aa4a1a2e20?q=80&w=600&auto=format&fit=crop" alt="Runway 1" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-src="https://images.unsplash.com/photo-1560343090-f0409e92791a?q=80&w=1200&auto=format&fit=crop" data-caption="Campaign • Year: 2023"><img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?q=80&w=600&auto=format&fit=crop" alt="Campaign 1" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-src="https://images.unsplash.com/photo-1578632292335-df3abbb0d586?q=80&w=1200&auto=format&fit=crop" data-caption="Editorial • 2023"><img src="https://images.unsplash.com/photo-1578632292335-df3abbb0d586?q=80&w=600&auto=format&fit=crop" alt="Editorial 2" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-src="https://images.unsplash.com/photo-1548266652-99cf27701ced?q=80&w=1200&auto=format&fit=crop" data-caption="Lookbook • 2022"><img src="https://images.unsplash.com/photo-1548266652-99cf27701ced?q=80&w=600&auto=format&fit=crop" alt="Lookbook" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" data-caption="Runway • 2022"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop" alt="Runway 2" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" data-caption="Editorial • 2022"><img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=600&auto=format&fit=crop" alt="Editorial 3" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" data-caption="Runway • 2021"><img src="https://images.unsplash.com/photo-1541739432-32aa4a1a2e20?q=80&w=600&auto=format&fit=crop" alt="Runway 3" loading="lazy" /></article>
-          <article class="card" tabindex="0" data-type="image" data-src="https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1200&auto=format&fit=crop" data-caption="Campaign • 2021"><img src="https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=600&auto=format&fit=crop" alt="Campaign 2" loading="lazy" /></article>
+        <div class=\"masonry\" id=\"modelGallery\" data-gallery=\"model\">
+          <!-- Populated from IG_POSTS_MODEL -->
         </div>
       </div>
     </section>
@@ -372,7 +364,17 @@
     <button class="lightbox__nav lightbox__next" aria-label="Next">›</button>
   </div>
   <script>
-  const IG_POSTS_MODEL = [];
+  const IG_POSTS_MODEL = [
+  // Pulled from @oluyves as of Sept 2025
+  'https://www.instagram.com/reel/DOD78rFCl6V/',
+  'https://www.instagram.com/reel/DNyZYP82qor/',
+  'https://www.instagram.com/p/DOGI_ppDPOQ/',
+  'https://www.instagram.com/reel/DNbVYoAgQk1/',
+  'https://www.instagram.com/oluyves/p/DOBz38jjV5E/',
+  'https://www.instagram.com/p/DLp6agWN1K3/',
+  'https://www.instagram.com/reel/DORQxVGikel/',
+  'https://www.instagram.com/reel/DMa32untFiz/'
+];
   const IG_POSTS_CROCHET = [];
   const $ = (q, sc=document) => sc.querySelector(q);
   const $$ = (q, sc=document) => Array.from(sc.querySelectorAll(q));
@@ -403,14 +405,53 @@
   toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
   const lb = $('#lightbox'), lbImg = $('.lightbox__img'), lbVid = $('.lightbox__video'), lbCap = $('.lightbox__cap');
   let galleryItems = [], currentIndex = -1;
-  function openLB(item){ const type=item.dataset.type; const src=item.dataset.src; const cap=item.dataset.caption||''; if(type==='video'){ lbVid.src=src; lbVid.hidden=false; lbImg.src=''; lbImg.hidden=true; lbVid.play().catch(()=>{});} else { lbImg.src=src; lbImg.alt=cap; lbImg.hidden=false; lbVid.pause(); lbVid.hidden=true; lbVid.removeAttribute('src'); } lbCap.textContent=cap; lb.setAttribute('aria-hidden','false'); currentIndex = galleryItems.indexOf(item); }
+  function openLB(item){
+    const type = item.dataset.type; const src = item.dataset.src; const cap = item.dataset.caption||'';
+    if(type==='video'){
+      lbVid.src = src; lbVid.hidden = false; lbImg.src = ''; lbImg.hidden = true; lbVid.play().catch(()=>{});
+      lbCap.textContent = cap;
+    } else if(type==='embed'){
+      // Render Instagram embed inside caption area
+      lbImg.hidden = true; lbVid.hidden = true; lbVid.pause(); lbVid.removeAttribute('src');
+      lbCap.innerHTML = `<blockquote class=\"instagram-media\" data-instgrm-permalink=\"${src}\" data-instgrm-version=\"14\" style=\"background:#000; margin:0 auto;\"></blockquote>`;
+      loadInstagramScript();
+    } else {
+      lbImg.src = src; lbImg.alt = cap; lbImg.hidden = false; lbVid.pause(); lbVid.hidden = true; lbVid.removeAttribute('src');
+      lbCap.textContent = cap;
+    }
+    lb.setAttribute('aria-hidden','false'); currentIndex = galleryItems.indexOf(item);
+  });} else { lbImg.src=src; lbImg.alt=cap; lbImg.hidden=false; lbVid.pause(); lbVid.hidden=true; lbVid.removeAttribute('src'); } lbCap.textContent=cap; lb.setAttribute('aria-hidden','false'); currentIndex = galleryItems.indexOf(item); }
   function closeLB(){ lb.setAttribute('aria-hidden','true'); lbVid.pause(); }
   function stepLB(dir){ if(currentIndex<0) return; const next=(currentIndex+dir+galleryItems.length)%galleryItems.length; openLB(galleryItems[next]); }
   $('.lightbox__close').addEventListener('click', closeLB);
   $('.lightbox__prev').addEventListener('click', ()=>stepLB(-1));
   $('.lightbox__next').addEventListener('click', ()=>stepLB(1));
   window.addEventListener('keydown', (e)=>{ if(lb.getAttribute('aria-hidden')==='false'){ if(e.key==='Escape') closeLB(); if(e.key==='ArrowRight') stepLB(1); if(e.key==='ArrowLeft') stepLB(-1);} });
-  function bindGallery(){ galleryItems = $$('[data-gallery] .card'); galleryItems.forEach(item=>{ item.addEventListener('click', ()=>openLB(item)); item.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ openLB(item); }}); }); }
+  function bindGallery(){
+    // Build model gallery from Instagram URLs
+    const g = document.getElementById('modelGallery');
+    g.innerHTML = '';
+    const list = IG_POSTS_MODEL.length ? IG_POSTS_MODEL : [];
+    list.forEach((url)=>{
+      const card = document.createElement('article');
+      card.className='card';
+      card.tabIndex=0;
+      card.dataset.type='embed';
+      card.dataset.src=url;
+      card.dataset.caption = 'Instagram — ' + url.replace('https://www.instagram.com/','');
+      // Lightweight placeholder tile (click to open embed in lightbox)
+      card.innerHTML = `<div style="aspect-ratio:3/4;display:grid;place-items:center;background:linear-gradient(180deg, rgba(116,224,255,.12), rgba(247,217,166,.10));color:#cfe7ff;">
+        <div style=\"text-align:center;padding:10px\">Instagram Post<br><small>Tap to open</small></div>
+      </div>`;
+      g.appendChild(card);
+    });
+    // Rebind lightbox triggers
+    galleryItems = $$('[data-gallery] .card');
+    galleryItems.forEach(item=>{
+      item.addEventListener('click', ()=>openLB(item));
+      item.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ openLB(item); }});
+    });
+  }}); }); }
   $$('.filters .chip').forEach(btn=>{ btn.addEventListener('click', ()=>{ $$('.filters .chip').forEach(b=>b.classList.remove('is-active')); btn.classList.add('is-active'); const f=btn.dataset.filter; $$('#crochetGallery .card').forEach(card=>{ const ok=f==='all'||card.dataset.category===f; card.style.display= ok? '':'none'; }); }); });
   let reelsSwiper, processSwiper;
   function makeReelCard(url){ const slide=document.createElement('div'); slide.className='swiper-slide'; slide.innerHTML=`<article class="reel-card"><video muted preload="none" playsinline poster="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop"></video><div class=\"ig-overlay\"><span aria-hidden>⌁</span> <a href=\"${url}\" target=\"_blank\" rel=\"noopener\">Watch on IG</a></div></article>`; const v=slide.querySelector('video'); slide.addEventListener('mouseenter', ()=>{ if(!v.src) v.src = 'https://cdn.coverr.co/videos/coverr-fashion-model-walk-1402/1080p.mp4'; v.play().catch(()=>{}); }); slide.addEventListener('mouseleave', ()=>{ v.pause(); }); return slide; }
@@ -418,7 +459,21 @@
   function handleForm(form){ if(!form) return; const status=form.querySelector('.form__status'); form.addEventListener('submit',(e)=>{ if(!form.checkValidity()){ e.preventDefault(); status.textContent='Please fill required fields.'; return;} status.textContent='Sending…'; e.preventDefault(); status.textContent='Sent (demo).'; }); }
   function updateWhatsAppLink(){ const name=(document.getElementById('o-name')||{}).value||''; const msg=encodeURIComponent(`Hi Oluyves, I'd like a custom crochet. Name: ${name}. Measurements: …`); const wa=document.getElementById('waLink'); if(wa) wa.href=`https://wa.me/2348100610718?text=${msg}`; }
   function initGSAP(){ const isReduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches; if(isReduce || !window.gsap) return; gsap.registerPlugin(ScrollTrigger); gsap.from('.hero__title',{y:30,opacity:0,duration:.9}); gsap.from('.hero__sub',{y:20,opacity:0,delay:.1}); gsap.utils.toArray('.section').forEach(sec=>{ gsap.from(sec,{opacity:0,y:20,duration:.6,scrollTrigger:{trigger:sec,start:'top 80%'}}); }); }
-  window.addEventListener('DOMContentLoaded', ()=>{ bindGallery(); initSwipers(); setMode('model'); handleForm(document.getElementById('contactForm')); handleForm(document.getElementById('orderForm')); const oName=document.getElementById('o-name'); if(oName) oName.addEventListener('input', updateWhatsAppLink); updateWhatsAppLink(); initGSAP(); });
+  window.addEventListener('DOMContentLoaded', ()=>{
+    bindGallery();
+    initSwipers();
+    setMode('model');
+    handleForm(document.getElementById('contactForm'));
+    handleForm(document.getElementById('orderForm'));
+    const oName=document.getElementById('o-name'); if(oName) oName.addEventListener('input', updateWhatsAppLink); updateWhatsAppLink();
+    initGSAP();
+  });
+  function loadInstagramScript(){
+    if(document.getElementById('ig-embed')){ if(window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process(); return; }
+    const s=document.createElement('script'); s.id='ig-embed'; s.async=true; s.src='//www.instagram.com/embed.js';
+    s.onload=()=>{ if(window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process(); };
+    document.body.appendChild(s);
+  } initSwipers(); setMode('model'); handleForm(document.getElementById('contactForm')); handleForm(document.getElementById('orderForm')); const oName=document.getElementById('o-name'); if(oName) oName.addEventListener('input', updateWhatsAppLink); updateWhatsAppLink(); initGSAP(); });
   </script>
 </body>
 </html>
