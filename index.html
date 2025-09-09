@@ -6,18 +6,25 @@
   <title>Oluyves — Urban Fashion Model</title>
   <meta name="description" content="High-fashion. Editorial. Global." />
   <meta name="theme-color" content="#0b0f1a" />
+
+  <!-- Open Graph / Twitter: values auto-updated on mode toggle -->
   <meta property="og:title" content="Oluyves — Urban Fashion Model" />
   <meta property="og:description" content="High-fashion. Editorial. Global." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/assets/og-model.jpg" />
-  <meta property="og:url" content="#" />
+  <meta property="og:url" content="https://your-vercel-domain.vercel.app" />
   <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Swiper & GSAP (CDN) -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
   <style>
   :root{--bg:#0b0f1a;--txt:#f2f5f9;--cyan:#74e0ff;--champ:#f7d9a6;--glass:rgba(255,255,255,.06);--stroke:rgba(255,255,255,.14)}
   *{box-sizing:border-box}
@@ -28,18 +35,21 @@
   .container{width:min(1200px,92%);margin-inline:auto}
   .skip-link{position:absolute;left:-999px;top:-999px}
   .skip-link:focus{left:1rem;top:1rem;background:#000;color:#fff;padding:.5rem 1rem}
+  /* Nav */
   .nav{position:sticky;top:0;z-index:30;backdrop-filter:saturate(160%) blur(10px);background:linear-gradient(180deg, rgba(11,15,26,.72), rgba(11,15,26,.32));border-bottom:1px solid var(--stroke)}
   .nav__inner{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0}
   .brand{font:700 18px/1 Playfair Display,serif;letter-spacing:.12em;color:var(--txt);text-decoration:none}
   .nav__links{display:flex;gap:1rem}
   .nav__link{color:var(--txt);opacity:.8;text-decoration:none;padding:.5rem .25rem;border-bottom:2px solid transparent}
   .nav__link.is-active{border-color:var(--cyan)}
+  /* Toggle */
   .mode-toggle{display:flex;align-items:center;gap:.5rem}
   .toggle{display:inline-grid;grid-template-columns:auto 36px auto;align-items:center;gap:.5rem}
   .toggle__label{font-size:.85rem;color:#cdd3dc}
   .toggle__knob{position:relative;width:36px;height:22px;border-radius:22px;background:var(--glass);border:1px solid var(--stroke)}
   .toggle__knob::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:linear-gradient(180deg,#1d2738,#0b0f1a);box-shadow:0 0 0 2px rgba(116,224,255,.25)}
   #modeSwitch:checked + .toggle .toggle__knob::after{left:16px}
+  /* Hero */
   .hero{position:relative;min-height:82vh;display:grid;align-items:end}
   .hero__bg{position:absolute;inset:0;overflow:hidden}
   .hero__video{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(1.05)}
@@ -49,17 +59,21 @@
   .hero__sub{opacity:.85;margin:.75rem 0 1.25rem}
   .hero__ctas{display:flex;gap:.75rem;flex-wrap:wrap}
   .hero__controls{margin-top:1rem}
+  /* Buttons */
   .btn{display:inline-block;border:1px solid var(--stroke);padding:.7rem 1rem;border-radius:999px;text-decoration:none;color:var(--txt);transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
   .btn--primary{background:linear-gradient(180deg, rgba(116,224,255,.18), rgba(247,217,166,.18));box-shadow:0 8px 40px rgba(116,224,255,.18) inset, 0 8px 26px rgba(247,217,166,.12)}
   .btn--ghost{background:rgba(255,255,255,.02)}
   .btn--glass{background:var(--glass)}
   .btn:hover{transform:translateY(-1px)}
+  /* Sections */
   .section{padding:64px 0;border-top:1px solid var(--stroke)}
   .section__head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1.25rem}
   .section h2{font:700 28px/1.2 Playfair Display,serif}
   .eyebrow{letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+  /* Grid */
   .grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem}
   @media (max-width: 900px){.grid-2{grid-template-columns:1fr;}}
+  /* Masonry */
   .masonry{columns:1;column-gap:12px}
   @media (min-width:640px){.masonry{columns:2}}
   @media (min-width:1024px){.masonry{columns:3}}
@@ -68,21 +82,26 @@
   .card::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(116,224,255,.08), inset 0 -40px 80px rgba(11,15,26,.6);opacity:0;transition:opacity .25s ease}
   .card:hover::after{opacity:1}
   .card:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+  /* Swiper */
   .swiper{--swiper-theme-color: var(--cyan);padding:6px}
   .swiper .swiper-slide{width:280px;max-width:80vw}
   .reel-card{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--stroke);background:var(--glass)}
   .reel-card video{width:100%;height:420px;object-fit:cover}
   .reel-card .ig-overlay{position:absolute;right:10px;top:10px;padding:.35rem .6rem;border-radius:999px;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:flex;gap:.4rem;align-items:center}
   .reel-card .ig-overlay a{color:#fff;text-decoration:none;font-size:.85rem}
+  /* Logos */
   .logo-strip{display:flex;gap:2.5rem;justify-content:center;align-items:center;flex-wrap:wrap;opacity:.85}
   .logo-strip img{filter:grayscale(1);opacity:.8;transition:filter .2s, opacity .2s}
   .logo-strip img:hover{filter:none;opacity:1}
+  /* Tables */
   .tbl{width:100%;border-collapse:separate;border-spacing:0;margin:.5rem 0;overflow:hidden;border-radius:12px}
   .tbl th,.tbl td{padding:.6rem .8rem;border-bottom:1px solid var(--stroke)}
   .tbl th{font-weight:600;text-align:left}
+  /* Quotes */
   .quotes{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
   .quote{padding:1rem;border:1px solid var(--stroke);border-radius:16px;background:var(--glass)}
   .quote blockquote{margin:0 0 .5rem 0;font-style:italic}
+  /* Forms */
   .form{display:grid;gap:.9rem}
   .f{display:grid;gap:.4rem}
   input,textarea{background:rgba(255,255,255,.03);border:1px solid var(--stroke);border-radius:12px;color:var(--txt);padding:.7rem}
@@ -90,10 +109,12 @@
   .form__actions{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
   .form__status{font-size:.9rem;opacity:.9}
   .contact-card{padding:1rem;border-radius:16px;border:1px solid var(--stroke)}
+  /* Footer */
   .footer{border-top:1px solid var(--stroke);padding:28px 0;margin-top:20px}
   .footer__inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   .to-top{border-radius:999px;border:1px solid var(--stroke);background:var(--glass);color:var(--txt);padding:.5rem .7rem;opacity:0;transition:opacity .3s}
   .to-top.is-show{opacity:1}
+  /* Lightbox */
   .lightbox{position:fixed;inset:0;background:rgba(6,8,14,.85);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:100}
   .lightbox[aria-hidden="false"]{display:flex}
   .lightbox__figure{max-width:min(1000px,92vw)}
@@ -103,16 +124,21 @@
   .lightbox__close{right:24px}
   .lightbox__prev{left:24px;top:50%;transform:translateY(-50%)}
   .lightbox__next{right:24px;top:50%;transform:translateY(-50%)}
+  /* Glass helpers */
   .glass{background:var(--glass);border:1px solid var(--stroke);border-radius:16px;padding:1rem}
+  /* Mode visibility */
   .section--model{display:block}
   .section--crochet{display:block}
   body[data-mode="crochet"] .section--model{display:none}
   body[data-mode="model"] .section--crochet{display:none}
+  /* Accessibility & Motion */
   @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
   </style>
 </head>
 <body data-mode="model">
   <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Sticky Nav -->
   <header class="nav" role="banner" aria-label="Primary">
     <div class="nav__inner container">
       <a class="brand" href="#hero" aria-label="Oluyves home">OLUYVES</a>
@@ -132,11 +158,14 @@
       </div>
     </div>
   </header>
+
   <main id="main">
+    <!-- HERO (Model) -->
     <section id="hero" class="hero section section--model" aria-label="Hero">
       <div class="hero__bg">
-        <video class="hero__video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop">
-          <source src="" type="video/mp4" />
+        <!-- TODO: replace video src/poster with your assets -->
+        <video class="hero__video" autoplay muted loop playsinline poster="/assets/hero-model-poster.webp">
+          <source src="/assets/hero-model-loop.mp4" type="video/mp4" />
         </video>
         <div class="hero__vignette" aria-hidden="true"></div>
       </div>
@@ -145,17 +174,20 @@
         <p class="hero__sub">High-fashion. Editorial. Global.</p>
         <div class="hero__ctas">
           <a class="btn btn--primary" href="#contact">Book for Campaigns</a>
-          <a class="btn btn--ghost" href="#" aria-disabled="true">Download Media Kit</a>
+          <a class="btn btn--ghost" href="/assets/media-kit.pdf" download>Download Media Kit</a>
         </div>
         <div class="hero__controls">
           <button class="btn btn--glass" id="heroModeBtn" aria-pressed="false">Switch to Crochet</button>
         </div>
       </div>
     </section>
+
+    <!-- HERO (Crochet) -->
     <section id="hero-crochet" class="hero section section--crochet" aria-label="Hero Crochet" hidden>
       <div class="hero__bg">
-        <video class="hero__video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1627351948994-3fcdeec95bf5?q=80&w=1200&auto=format&fit=crop">
-          <source src="" type="video/mp4" />
+        <!-- TODO: replace video src/poster with your assets -->
+        <video class="hero__video" autoplay muted loop playsinline poster="/assets/hero-crochet-poster.webp">
+          <source src="/assets/hero-crochet-loop.mp4" type="video/mp4" />
         </video>
         <div class="hero__vignette" aria-hidden="true"></div>
       </div>
@@ -164,51 +196,89 @@
         <p class="hero__sub">Made-to-measure pieces. Hand-crafted. Global delivery.</p>
         <div class="hero__ctas">
           <a class="btn btn--primary" href="#order">Order Custom</a>
-          <a class="btn btn--ghost" href="#" aria-disabled="true">View Lookbook</a>
+          <a class="btn btn--ghost" href="/assets/crochet-lookbook.pdf" download>View Lookbook</a>
         </div>
         <div class="hero__controls">
           <button class="btn btn--glass" id="heroModeBtn2" aria-pressed="true">Switch to Model</button>
         </div>
       </div>
     </section>
+
+    <!-- Runway & Editorial (Model) -->
     <section id="runway" class="section section--model" aria-label="Runway & Editorial">
       <div class="container">
         <header class="section__head">
           <h2>Runway & Editorial</h2>
           <p>Selected work. Lightbox opens details.</p>
         </header>
-        <div class=\"masonry\" id=\"modelGallery\" data-gallery=\"model\">
-          <!-- Populated from IG_POSTS_MODEL -->
+        <div class="masonry" id="modelGallery" data-gallery="model">
+          <!-- TODO: replace with at least 9 images -->
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-01.webp" data-caption="Client: Placeholder • Role: Model • Year: 2024">
+            <img src="/assets/model-01-thumb.webp" alt="Editorial portrait 1" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-02.webp" data-caption="Client: Placeholder • Role: Model • Year: 2024">
+            <img src="/assets/model-02-thumb.webp" alt="Editorial portrait 2" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-03.webp" data-caption="Runway • Year: 2023">
+            <img src="/assets/model-03-thumb.webp" alt="Runway still 1" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-04.webp" data-caption="Editorial • Year: 2023">
+            <img src="/assets/model-04-thumb.webp" alt="Editorial portrait 3" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-05.webp" data-caption="Campaign • Year: 2023">
+            <img src="/assets/model-05-thumb.webp" alt="Campaign look 1" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-06.webp" data-caption="Lookbook • Year: 2022">
+            <img src="/assets/model-06-thumb.webp" alt="Lookbook shot" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-07.webp" data-caption="Editorial • Year: 2022">
+            <img src="/assets/model-07-thumb.webp" alt="Editorial portrait 4" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-08.webp" data-caption="Runway • Year: 2022">
+            <img src="/assets/model-08-thumb.webp" alt="Runway still 2" loading="lazy" />
+          </article>
+          <article class="card" tabindex="0" data-type="image" data-src="/assets/model-09.webp" data-caption="Campaign • Year: 2021">
+            <img src="/assets/model-09-thumb.webp" alt="Campaign look 2" loading="lazy" />
+          </article>
         </div>
       </div>
     </section>
+
+    <!-- Reels Slider (Model) -->
     <section id="reels" class="section section--model" aria-label="Reels">
       <div class="container">
-        <header class="section__head"><h2>Reels</h2><p>Hover to preview. Open to watch on Instagram.</p></header>
+        <header class="section__head">
+          <h2>Reels</h2>
+          <p>Hover to preview. Open to watch on Instagram.</p>
+        </header>
         <div class="swiper" id="reelsSlider" aria-label="Instagram reels slider">
           <div class="swiper-wrapper" id="reelsWrapper"></div>
           <div class="swiper-pagination"></div>
         </div>
       </div>
     </section>
+
+    <!-- Brand Collab / Press Strip (Model) -->
     <section id="press" class="section section--model" aria-label="Brand collaborations and press">
       <div class="container">
         <p class="eyebrow">Selected collaborations & features</p>
         <ul class="logo-strip">
-          <li><img src="https://dummyimage.com/140x40/cccccc/000000&text=Brand+1" alt="Brand 1" loading="lazy"></li>
-          <li><img src="https://dummyimage.com/140x40/cccccc/000000&text=Brand+2" alt="Brand 2" loading="lazy"></li>
-          <li><img src="https://dummyimage.com/140x40/cccccc/000000&text=Brand+3" alt="Brand 3" loading="lazy"></li>
-          <li><img src="https://dummyimage.com/140x40/cccccc/000000&text=Brand+4" alt="Brand 4" loading="lazy"></li>
-          <li><img src="https://dummyimage.com/140x40/cccccc/000000&text=Brand+5" alt="Brand 5" loading="lazy"></li>
+          <!-- TODO: swap placeholder logos -->
+          <li><img src="/assets/logo-1-gray.svg" alt="Brand 1" loading="lazy"></li>
+          <li><img src="/assets/logo-2-gray.svg" alt="Brand 2" loading="lazy"></li>
+          <li><img src="/assets/logo-3-gray.svg" alt="Brand 3" loading="lazy"></li>
+          <li><img src="/assets/logo-4-gray.svg" alt="Brand 4" loading="lazy"></li>
+          <li><img src="/assets/logo-5-gray.svg" alt="Brand 5" loading="lazy"></li>
         </ul>
-        <p style="margin-top:12px;opacity:.75;font-size:.9rem">Tip: Save IG covers as <code>.webp</code> in <code>/assets/ig/model/</code> using the IDs above for file names.</p>
       </div>
     </section>
+
+    <!-- About + Measurements (Model) -->
     <section id="about" class="section section--model" aria-label="About and measurements">
       <div class="container grid-2">
         <article>
           <h2>About</h2>
-          <p>Oluyves is a Lagos‑based, global fashion model with an urban editorial edge. She works across campaigns, runway, and lookbooks with a focus on clean silhouettes and strong presence on camera. Available for international bookings.</p>
+          <p>Oluyves is a Lagos-based, global fashion model with an urban editorial edge. She works across campaigns, runway, and lookbooks with a focus on clean silhouettes and strong presence on camera. Available for international bookings.</p>
         </article>
         <aside>
           <h3>Measurements</h3>
@@ -225,6 +295,8 @@
         </aside>
       </div>
     </section>
+
+    <!-- Testimonials (Model) -->
     <section id="quotes" class="section section--model" aria-label="Testimonials">
       <div class="container quotes">
         <figure class="quote"><blockquote>“Strong camera presence and reliable on set.”</blockquote><figcaption>— S. A., Photographer</figcaption></figure>
@@ -232,6 +304,8 @@
         <figure class="quote"><blockquote>“Professional from casting to delivery.”</blockquote><figcaption>— L. D., Producer</figcaption></figure>
       </div>
     </section>
+
+    <!-- CROCHET: Product Gallery -->
     <section id="products" class="section section--crochet" aria-label="Crochet products" hidden>
       <div class="container">
         <header class="section__head">
@@ -245,10 +319,21 @@
           </div>
         </header>
         <div class="masonry" id="crochetGallery" data-gallery="crochet">
-          <!-- Populated from IG_POSTS_CROCHET -->
+          <!-- TODO: at least 9 items with real media -->
+          <article class="card" tabindex="0" data-type="image" data-category="tops" data-src="/assets/crochet-top-01.webp" data-caption="Oluyves Crochet Top • Cotton blend • Champagne / Cyan"><img src="/assets/crochet-top-01-thumb.webp" alt="Crochet top in champagne" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="video" data-category="dresses" data-src="/assets/crochet-dress-01.mp4" data-caption="Custom Dress • Made-to-measure"><img src="/assets/crochet-dress-01-thumb.webp" alt="Crochet dress preview" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="sets" data-src="/assets/crochet-set-01.webp" data-caption="Two-piece set • Hand-crafted"><img src="/assets/crochet-set-01-thumb.webp" alt="Crochet set preview" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="accessories" data-src="/assets/crochet-acc-01.webp" data-caption="Bag • Colorways available"><img src="/assets/crochet-acc-01-thumb.webp" alt="Crochet accessory bag" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="tops" data-src="/assets/crochet-top-02.webp" data-caption="Top • Custom fit"><img src="/assets/crochet-top-02-thumb.webp" alt="Crochet top 2" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="dresses" data-src="/assets/crochet-dress-02.webp" data-caption="Dress • Colorways on request"><img src="/assets/crochet-dress-02-thumb.webp" alt="Crochet dress 2" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="sets" data-src="/assets/crochet-set-02.webp" data-caption="Set • Made-to-measure"><img src="/assets/crochet-set-02-thumb.webp" alt="Crochet set 2" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="accessories" data-src="/assets/crochet-acc-02.webp" data-caption="Headwear • Custom sizing"><img src="/assets/crochet-acc-02-thumb.webp" alt="Crochet headwear" loading="lazy" /></article>
+          <article class="card" tabindex="0" data-type="image" data-category="dresses" data-src="/assets/crochet-dress-03.webp" data-caption="Occasion dress • Delivery worldwide"><img src="/assets/crochet-dress-03-thumb.webp" alt="Crochet dress 3" loading="lazy" /></article>
         </div>
       </div>
     </section>
+
+    <!-- CROCHET: Process Slider -->
     <section id="process" class="section section--crochet" aria-label="Process reels" hidden>
       <div class="container">
         <header class="section__head"><h2>Process</h2><p>From yarn to piece.</p></header>
@@ -258,6 +343,8 @@
         </div>
       </div>
     </section>
+
+    <!-- CROCHET: Sizing & Customization -->
     <section id="sizing" class="section section--crochet" aria-label="Sizing and customization" hidden>
       <div class="container grid-2">
         <article>
@@ -280,18 +367,20 @@
         </aside>
       </div>
     </section>
+
+    <!-- CONTACT (Shared) -->
     <section id="contact" class="section section--shared" aria-label="Contact and booking">
       <div class="container grid-2">
         <article>
           <h2>Contact / Booking</h2>
-          <form id="contactForm" class="form" action="#" method="POST" novalidate>
+          <form id="contactForm" class="form" action="https://formspree.io/f/your-id" method="POST" novalidate>
             <div class="f"><label for="name">Name</label><input id="name" name="name" type="text" required /></div>
             <div class="f"><label for="email">Email</label><input id="email" name="email" type="email" required /></div>
             <div class="f"><label for="brand">Brand</label><input id="brand" name="brand" type="text" /></div>
             <div class="f"><label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea></div>
             <div class="form__actions">
               <button class="btn btn--primary" type="submit">Send</button>
-              <a class="btn btn--ghost" href="#" aria-disabled="true">Press Kit</a>
+              <a class="btn btn--ghost" href="/assets/press-kit.pdf" download>Press Kit</a>
             </div>
             <p class="form__status" role="status" aria-live="polite"></p>
           </form>
@@ -312,11 +401,13 @@
         </aside>
       </div>
     </section>
+
+    <!-- CROCHET: Order CTA -->
     <section id="order" class="section section--crochet" aria-label="Order custom" hidden>
       <div class="container grid-2">
         <article>
           <h2>Order Custom</h2>
-          <form id="orderForm" class="form" action="#" method="POST" novalidate>
+          <form id="orderForm" class="form" action="https://formspree.io/f/your-id" method="POST" novalidate>
             <div class="f"><label for="o-name">Name</label><input id="o-name" name="name" type="text" required /></div>
             <div class="f"><label for="o-email">Email</label><input id="o-email" name="email" type="email" required /></div>
             <div class="f"><label for="o-whatsapp">WhatsApp</label><input id="o-whatsapp" name="whatsapp" type="tel" placeholder="+234…" /></div>
@@ -330,11 +421,13 @@
           </form>
         </article>
         <aside>
-          <div class="glass"><h3>Made‑to‑Measure</h3><p>Each piece is crafted to your measurements. Production windows vary by item.</p></div>
+          <div class="glass"><h3>Made-to-Measure</h3><p>Each piece is crafted to your measurements. Production windows vary by item.</p></div>
         </aside>
       </div>
     </section>
+
   </main>
+
   <footer class="footer" role="contentinfo">
     <div class="container footer__inner">
       <p>Lagos / Global</p>
@@ -346,6 +439,8 @@
       <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
     </div>
   </footer>
+
+  <!-- Lightbox Modal -->
   <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
     <button class="lightbox__close" aria-label="Close">×</button>
     <figure class="lightbox__figure">
@@ -356,180 +451,161 @@
     <button class="lightbox__nav lightbox__prev" aria-label="Previous">‹</button>
     <button class="lightbox__nav lightbox__next" aria-label="Next">›</button>
   </div>
+
   <script>
-// ========== DATA ==========
-const IG_POSTS_MODEL = [
-  { url: 'https://www.instagram.com/reel/DOD78rFCl6V/', poster: '/assets/ig/model/DOD78rFCl6V.webp', alt: 'Runway reel' },
-  { url: 'https://www.instagram.com/reel/DNyZYP82qor/', poster: '/assets/ig/model/DNyZYP82qor.webp', alt: 'Editorial reel' },
-  { url: 'https://www.instagram.com/p/DOGI_ppDPOQ/',  poster: '/assets/ig/model/DOGI_ppDPOQ.webp',  alt: 'Editorial still' },
-  { url: 'https://www.instagram.com/reel/DNbVYoAgQk1/', poster: '/assets/ig/model/DNbVYoAgQk1.webp', alt: 'Backstage reel' },
-  { url: 'https://www.instagram.com/p/DOBz38jjV5E/', poster: '/assets/ig/model/DOBz38jjV5E.webp', alt: 'Campaign still' },
-  { url: 'https://www.instagram.com/p/DLp6agWN1K3/',  poster: '/assets/ig/model/DLp6agWN1K3.webp',  alt: 'Runway still' },
-  { url: 'https://www.instagram.com/reel/DORQxVGikel/', poster: '/assets/ig/model/DORQxVGikel.webp', alt: 'Behind the scenes reel' },
-  { url: 'https://www.instagram.com/reel/DMa32untFiz/', poster: '/assets/ig/model/DMa32untFiz.webp', alt: 'Editorial reel' },
-  { url: 'https://www.instagram.com/p/DLx9rJW2AbC/', poster: '/assets/ig/model/DLx9rJW2AbC.webp', alt: 'Editorial still' },
-  { url: 'https://www.instagram.com/p/DKy4gdeV3Lm/', poster: '/assets/ig/model/DKy4gdeV3Lm.webp', alt: 'Runway still' },
-  { url: 'https://www.instagram.com/reel/DJtR54Rs98o/', poster: '/assets/ig/model/DJtR54Rs98o.webp', alt: 'Runway reel' },
-  { url: 'https://www.instagram.com/p/DJdE1QnpP1Z/', poster: '/assets/ig/model/DJdE1QnpP1Z.webp', alt: 'Editorial still' }
-];
-const IG_POSTS_CROCHET = [
-  { url: 'https://www.instagram.com/p/CRCH01TopID/', poster: '/assets/ig/crochet/CRCH01TopID.webp', alt: 'Crochet Top — champagne', category: 'tops' },
-  { url: 'https://www.instagram.com/reel/CRCH02DressID/', poster: '/assets/ig/crochet/CRCH02DressID.webp', alt: 'Crochet Dress — cyan trim', category: 'dresses' },
-  { url: 'https://www.instagram.com/p/CRCH03SetID/', poster: '/assets/ig/crochet/CRCH03SetID.webp', alt: 'Two‑piece set', category: 'sets' },
-  { url: 'https://www.instagram.com/reel/CRCH04AccID/', poster: '/assets/ig/crochet/CRCH04AccID.webp', alt: 'Bag accessory', category: 'accessories' },
-  { url: 'https://www.instagram.com/p/CRCH05TopID/', poster: '/assets/ig/crochet/CRCH05TopID.webp', alt: 'Crochet top 2', category: 'tops' },
-  { url: 'https://www.instagram.com/p/CRCH06DressID/', poster: '/assets/ig/crochet/CRCH06DressID.webp', alt: 'Dress 2', category: 'dresses' },
-  { url: 'https://www.instagram.com/p/CRCH07SetID/', poster: '/assets/ig/crochet/CRCH07SetID.webp', alt: 'Set 2', category: 'sets' },
-  { url: 'https://www.instagram.com/p/CRCH08AccID/', poster: '/assets/ig/crochet/CRCH08AccID.webp', alt: 'Headwear', category: 'accessories' },
-  { url: 'https://www.instagram.com/reel/CRCH09DressID/', poster: '/assets/ig/crochet/CRCH09DressID.webp', alt: 'Occasion dress', category: 'dresses' },
-  { url: 'https://www.instagram.com/p/CRCH10TopID/', poster: '/assets/ig/crochet/CRCH10TopID.webp', alt: 'Halter top', category: 'tops' },
-  { url: 'https://www.instagram.com/reel/CRCH11SetID/', poster: '/assets/ig/crochet/CRCH11SetID.webp', alt: 'Beach set', category: 'sets' },
-  { url: 'https://www.instagram.com/p/CRCH12AccID/', poster: '/assets/ig/crochet/CRCH12AccID.webp', alt: 'Belt accessory', category: 'accessories' }
-];
+  // ===== Constants (replace with real links) =====
+  const IG_POSTS_MODEL = [
+    // Add Instagram post/reel URLs for @oluyves.
+    // e.g. 'https://www.instagram.com/reel/XXXXXXXX/'
+  ];
+  const IG_POSTS_CROCHET = [
+    // Add crochet process reels or Google Drive links (use posters for performance).
+  ];
 
-// ========== UTIL ==========
-const $ = (q, sc=document) => sc.querySelector(q);
-const $$ = (q, sc=document) => Array.from(sc.querySelectorAll(q));
+  // ===== Utilities =====
+  const $ = (q, sc=document) => sc.querySelector(q);
+  const $$ = (q, sc=document) => Array.from(sc.querySelectorAll(q));
 
-// ========== MODE ==========
-const body = document.body;
-const switchEl = $('#modeSwitch');
-$('#heroModeBtn')?.addEventListener('click', toggleMode);
-$('#heroModeBtn2')?.addEventListener('click', toggleMode);
-if(switchEl) switchEl.addEventListener('change', ()=> setMode(switchEl.checked ? 'crochet' : 'model'));
-function setMode(mode){
-  body.dataset.mode = mode;
-  const isCrochet = mode==='crochet';
-  document.title = isCrochet ? 'Custom Made Crochets by Oluyves' : 'Oluyves — Urban Fashion Model';
-  const desc = isCrochet ? 'Made-to-measure pieces. Hand-crafted. Global delivery.' : 'High-fashion. Editorial. Global.';
-  document.querySelector('meta[name="description"]').setAttribute('content', desc);
-  document.querySelector('meta[property="og:title"]').setAttribute('content', document.title);
-  document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
-  const book=$('.book-model'), order=$('.order-crochet'); if(book&&order){book.hidden=isCrochet; order.hidden=!isCrochet;}
-  $$('.nav__link').forEach(a=>a.classList.remove('is-active'));
-}
-function toggleMode(){ const next = body.dataset.mode==='model' ? 'crochet' : 'model'; setMode(next); if(switchEl) switchEl.checked = next==='crochet'; }
+  // ===== Mode Toggle =====
+  const body = document.body;
+  const switchEl = $('#modeSwitch');
+  const heroBtn = $('#heroModeBtn');
+  const heroBtn2 = $('#heroModeBtn2');
 
-// ========== SCROLL SPY ==========
-const spyLinks = $$('.js-spy');
-const obs = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    const id = '#'+e.target.id;
-    if(e.isIntersecting){ $$('.nav__link').forEach(a=>a.classList.toggle('is-active', a.getAttribute('href')===id)); }
-  });
-},{rootMargin:'-45% 0px -50% 0px', threshold:0});
-spyLinks.forEach(a=>{ const sec = $(a.getAttribute('href')); if(sec) obs.observe(sec); });
-
-// ========== BACK TO TOP ==========
-const toTop = $('#toTop');
-window.addEventListener('scroll', ()=> toTop.classList.toggle('is-show', window.scrollY>600));
-toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-
-// ========== LIGHTBOX ==========
-const lb = $('#lightbox'), lbImg = $('.lightbox__img'), lbVid = $('.lightbox__video'), lbCap = $('.lightbox__cap');
-let galleryItems = [], currentIndex = -1;
-function openLB(item){
-  const type = item.dataset.type; const src = item.dataset.src; const cap = item.dataset.caption||'';
-  if(type==='video'){
-    lbVid.src = src; lbVid.hidden=false; lbImg.src=''; lbImg.hidden=true; lbVid.play().catch(()=>{});
-    lbCap.textContent = cap;
-  } else if(type==='embed'){
-    lbImg.hidden=true; lbVid.hidden=true; lbVid.pause(); lbVid.removeAttribute('src');
-    lbCap.innerHTML = `<blockquote class=\"instagram-media\" data-instgrm-permalink=\"${src}\" data-instgrm-version=\"14\" style=\"background:#000;margin:0 auto;\"></blockquote>`;
-    loadInstagramScript();
-  } else {
-    lbImg.src = src; lbImg.alt=cap; lbImg.hidden=false; lbVid.pause(); lbVid.hidden=true; lbVid.removeAttribute('src');
-    lbCap.textContent = cap;
+  function setMode(mode){
+    body.dataset.mode = mode; // 'model' | 'crochet'
+    const isCrochet = mode === 'crochet';
+    document.title = isCrochet ? 'Custom Made Crochets by Oluyves' : 'Oluyves — Urban Fashion Model';
+    const desc = isCrochet ? 'Made-to-measure pieces. Hand-crafted. Global delivery.' : 'High-fashion. Editorial. Global.';
+    document.querySelector('meta[name="description"]').setAttribute('content', desc);
+    document.querySelector('meta[property="og:title"]').setAttribute('content', document.title);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
+    document.querySelector('meta[property="og:image"]').setAttribute('content', isCrochet ? '/assets/og-crochet.jpg' : '/assets/og-model.jpg');
+    $('.book-model').hidden = isCrochet;
+    $('.order-crochet').hidden = !isCrochet;
+    $$('.nav__link').forEach(a=>a.classList.remove('is-active'));
   }
-  lb.setAttribute('aria-hidden','false'); currentIndex = galleryItems.indexOf(item);
-}
-function closeLB(){ lb.setAttribute('aria-hidden','true'); lbVid.pause(); }
-function stepLB(dir){ if(currentIndex<0) return; const next=(currentIndex+dir+galleryItems.length)%galleryItems.length; openLB(galleryItems[next]); }
-$('.lightbox__close').addEventListener('click', closeLB);
-$('.lightbox__prev').addEventListener('click', ()=>stepLB(-1));
-$('.lightbox__next').addEventListener('click', ()=>stepLB(1));
-window.addEventListener('keydown', (e)=>{ if(lb.getAttribute('aria-hidden')==='false'){ if(e.key==='Escape') closeLB(); if(e.key==='ArrowRight') stepLB(1); if(e.key==='ArrowLeft') stepLB(-1);} });
+  function toggleMode(){
+    const next = body.dataset.mode === 'model' ? 'crochet' : 'model';
+    setMode(next);
+    if(switchEl) switchEl.checked = next === 'crochet';
+  }
+  switchEl && switchEl.addEventListener('change', ()=> setMode(switchEl.checked ? 'crochet' : 'model'));
+  heroBtn && heroBtn.addEventListener('click', toggleMode);
+  heroBtn2 && heroBtn2.addEventListener('click', toggleMode);
 
-// ========== GALLERIES ==========
-function buildModelGallery(){
-  const g = $('#modelGallery'); g.innerHTML='';
-  IG_POSTS_MODEL.forEach(({url, poster, alt})=>{
-    const card = document.createElement('article'); card.className='card'; card.tabIndex=0; card.dataset.type='embed'; card.dataset.src=url; card.dataset.caption='Instagram — '+url.replace('https://www.instagram.com/','');
-    const img = document.createElement('img'); img.loading='lazy'; img.alt=alt||'Instagram post'; img.src=poster||'https://dummyimage.com/600x800/0b0f1a/74e0ff&text=Instagram';
-    card.appendChild(img); g.appendChild(card);
+  // ===== Scroll spy =====
+  const spyLinks = $$('.js-spy');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      const id = '#'+e.target.id;
+      if(e.isIntersecting){ $$('.nav__link').forEach(a=>a.classList.toggle('is-active', a.getAttribute('href')===id)); }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+  spyLinks.forEach(a=>{ const sec = $(a.getAttribute('href')); if(sec) obs.observe(sec); });
+
+  // ===== Back to top =====
+  const toTop = $('#toTop');
+  window.addEventListener('scroll', ()=>{ toTop.classList.toggle('is-show', window.scrollY>600); });
+  toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+  // ===== Lightbox =====
+  const lb = $('#lightbox'), lbImg = $('.lightbox__img'), lbVid = $('.lightbox__video'), lbCap = $('.lightbox__cap');
+  let galleryItems = [], currentIndex = -1;
+  function openLB(item){
+    const type = item.dataset.type; const src = item.dataset.src; const cap = item.dataset.caption||'';
+    if(type==='video'){
+      lbVid.src = src; lbVid.hidden = false; lbImg.src = ''; lbImg.hidden = true; lbVid.play().catch(()=>{});
+    } else {
+      lbImg.src = src; lbImg.alt = cap; lbImg.hidden = false; lbVid.pause(); lbVid.hidden = true; lbVid.removeAttribute('src');
+    }
+    lbCap.textContent = cap; lb.setAttribute('aria-hidden','false'); currentIndex = galleryItems.indexOf(item);
+  }
+  function closeLB(){ lb.setAttribute('aria-hidden','true'); lbVid.pause(); }
+  function stepLB(dir){ if(currentIndex<0) return; const next = (currentIndex + dir + galleryItems.length) % galleryItems.length; openLB(galleryItems[next]); }
+  $('.lightbox__close').addEventListener('click', closeLB);
+  $('.lightbox__prev').addEventListener('click', ()=>stepLB(-1));
+  $('.lightbox__next').addEventListener('click', ()=>stepLB(1));
+  window.addEventListener('keydown', (e)=>{ if(lb.getAttribute('aria-hidden')==='false'){ if(e.key==='Escape') closeLB(); if(e.key==='ArrowRight') stepLB(1); if(e.key==='ArrowLeft') stepLB(-1);} });
+  function bindGallery(){
+    galleryItems = $$('[data-gallery] .card');
+    galleryItems.forEach(item=>{
+      item.addEventListener('click', ()=>openLB(item));
+      item.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ openLB(item); }});
+    });
+  }
+
+  // ===== Filters (Crochet) =====
+  $$('.filters .chip').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      $$('.filters .chip').forEach(b=>b.classList.remove('is-active'));
+      btn.classList.add('is-active'); const f = btn.dataset.filter;
+      $$('#crochetGallery .card').forEach(card=>{ const ok = f==='all' || card.dataset.category===f; card.style.display = ok ? '' : 'none'; });
+    });
   });
-}
-function buildCrochetGallery(){
-  const g = $('#crochetGallery'); g.innerHTML='';
-  IG_POSTS_CROCHET.forEach(({url, poster, alt, category})=>{
-    const card = document.createElement('article'); card.className='card'; card.tabIndex=0; card.dataset.type='embed'; card.dataset.src=url; card.dataset.caption='Instagram — '+url.replace('https://www.instagram.com/',''); card.dataset.category = category||'tops';
-    const img = document.createElement('img'); img.loading='lazy'; img.alt=alt||'Crochet piece'; img.src=poster||'https://dummyimage.com/600x800/0b0f1a/74e0ff&text=Instagram';
-    card.appendChild(img); g.appendChild(card);
+
+  // ===== Swipers =====
+  let reelsSwiper, processSwiper;
+  function makeReelCard(url){
+    const slide = document.createElement('div'); slide.className='swiper-slide';
+    slide.innerHTML = `
+      <article class="reel-card">
+        <video muted preload="none" playsinline poster="/assets/reel-poster.webp"></video>
+        <div class=\"ig-overlay\"><span aria-hidden>⌁</span> <a href=\"${url}\" target=\"_blank\" rel=\"noopener\">Watch on IG</a></div>
+      </article>`;
+    const v = slide.querySelector('video');
+    slide.addEventListener('mouseenter', ()=>{ if(!v.src) v.src = '/assets/reel-silent.mp4'; v.play().catch(()=>{}); });
+    slide.addEventListener('mouseleave', ()=>{ v.pause(); });
+    return slide;
+  }
+  function initSwipers(){
+    const reelsWrapper = $('#reelsWrapper'); reelsWrapper.innerHTML='';
+    (IG_POSTS_MODEL.length?IG_POSTS_MODEL:Array(8).fill('https://www.instagram.com/oluyves/')).forEach(url=> reelsWrapper.appendChild(makeReelCard(url)) );
+    reelsSwiper = new Swiper('#reelsSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2500,disableOnInteraction:true}, pagination:{el:'#reelsSlider .swiper-pagination', clickable:true} });
+
+    const processWrapper = $('#processWrapper'); processWrapper.innerHTML='';
+    (IG_POSTS_CROCHET.length?IG_POSTS_CROCHET:Array(6).fill('https://www.instagram.com/oluyves/')).forEach(url=> processWrapper.appendChild(makeReelCard(url)) );
+    processSwiper = new Swiper('#processSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2800,disableOnInteraction:true}, pagination:{el:'#processSlider .swiper-pagination', clickable:true} });
+  }
+
+  // ===== Forms =====
+  function handleForm(form){
+    const status = form.querySelector('.form__status');
+    form.addEventListener('submit', (e)=>{
+      if(!form.checkValidity()){ e.preventDefault(); status.textContent='Please fill required fields.'; return; }
+      status.textContent='Sending…';
+    });
+  }
+
+  // ===== WhatsApp deep link =====
+  function updateWhatsAppLink(){
+    const name = (document.getElementById('o-name')||{}).value||'';
+    const msg = encodeURIComponent(`Hi Oluyves, I'd like a custom crochet. Name: ${name}. Measurements: …`);
+    const wa = document.getElementById('waLink'); if(wa) wa.href = `https://wa.me/2348100610718?text=${msg}`;
+  }
+
+  // ===== GSAP choreography =====
+  function initGSAP(){
+    const isReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(isReduce || !window.gsap) return;
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.hero__title', {y:30, opacity:0, duration:.9});
+    gsap.from('.hero__sub', {y:20, opacity:0, delay:.1});
+    gsap.utils.toArray('.section').forEach((sec)=>{
+      gsap.from(sec, {opacity:0, y:20, duration:.6, scrollTrigger:{trigger:sec,start:'top 80%'}});
+    });
+  }
+
+  // ===== Init =====
+  window.addEventListener('DOMContentLoaded', ()=>{
+    bindGallery();
+    initSwipers();
+    setMode('model');
+    handleForm(document.getElementById('contactForm'));
+    handleForm(document.getElementById('orderForm'));
+    const oName = document.getElementById('o-name'); if(oName) oName.addEventListener('input', updateWhatsAppLink); updateWhatsAppLink();
+    initGSAP();
   });
-}
-function bindLightbox(){
-  galleryItems = $$('[data-gallery] .card');
-  galleryItems.forEach(item=>{
-    item.addEventListener('click', ()=>openLB(item));
-    item.addEventListener('keydown', (e)=>{ if(e.key==='Enter') openLB(item); });
-  });
-}
-
-// ========== FILTERS ==========
-$$('.filters .chip').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    $$('.filters .chip').forEach(b=>b.classList.remove('is-active'));
-    btn.classList.add('is-active'); const f=btn.dataset.filter;
-    $$('#crochetGallery .card').forEach(card=>{ const ok=f==='all'||card.dataset.category===f; card.style.display = ok ? '' : 'none'; });
-  });
-});
-
-// ========== SWIPERS ==========
-let reelsSwiper, processSwiper;
-function makeReelCard(url){
-  const slide=document.createElement('div'); slide.className='swiper-slide';
-  slide.innerHTML=`<article class=\"reel-card\"><video muted preload=\"none\" playsinline poster=\"https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop\"></video><div class=\"ig-overlay\"><span aria-hidden>⌁</span> <a href=\"${url}\" target=\"_blank\" rel=\"noopener\">Watch on IG</a></div></article>`;
-  const v=slide.querySelector('video');
-  slide.addEventListener('mouseenter', ()=>{ if(!v.src) v.src='https://cdn.coverr.co/videos/coverr-fashion-model-walk-1402/1080p.mp4'; v.play().catch(()=>{}); });
-  slide.addEventListener('mouseleave', ()=> v.pause());
-  return slide;
-}
-function initSwipers(){
-  const reelsWrapper=$('#reelsWrapper'); reelsWrapper.innerHTML='';
-  (IG_POSTS_MODEL.length?IG_POSTS_MODEL:Array(8).fill({url:'https://www.instagram.com/oluyves/'})).forEach(item=> reelsWrapper.appendChild(makeReelCard(item.url||item)) );
-  reelsSwiper = new Swiper('#reelsSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2500,disableOnInteraction:true}, pagination:{el:'#reelsSlider .swiper-pagination', clickable:true} });
-
-  const processWrapper=$('#processWrapper'); processWrapper.innerHTML='';
-  (IG_POSTS_CROCHET.length?IG_POSTS_CROCHET:Array(6).fill({url:'https://www.instagram.com/oluyves/'})).forEach(item=> processWrapper.appendChild(makeReelCard(item.url||item)) );
-  processSwiper = new Swiper('#processSlider',{ slidesPerView:'auto', spaceBetween:12, loop:true, autoplay:{delay:2800,disableOnInteraction:true}, pagination:{el:'#processSlider .swiper-pagination', clickable:true} });
-}
-
-// ========== FORMS ==========
-function handleForm(form){ if(!form) return; const status=form.querySelector('.form__status'); form.addEventListener('submit',(e)=>{ if(!form.checkValidity()){ e.preventDefault(); status.textContent='Please fill required fields.'; return;} status.textContent='Sending…'; e.preventDefault(); status.textContent='Sent (demo).'; }); }
-function updateWhatsAppLink(){ const name=($('#o-name')||{}).value||''; const msg=encodeURIComponent(`Hi Oluyves, I'd like a custom crochet. Name: ${name}. Measurements: …`); const wa=$('#waLink'); if(wa) wa.href=`https://wa.me/2348100610718?text=${msg}`; }
-
-// ========== GSAP ==========
-function initGSAP(){ const isReduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches; if(isReduce || !window.gsap) return; gsap.registerPlugin(ScrollTrigger); gsap.from('.hero__title',{y:30,opacity:0,duration:.9}); gsap.from('.hero__sub',{y:20,opacity:0,delay:.1}); gsap.utils.toArray('.section').forEach(sec=>{ gsap.from(sec,{opacity:0,y:20,duration:.6,scrollTrigger:{trigger:sec,start:'top 80%'}}); }); }
-
-// ========== INIT ==========
-window.addEventListener('DOMContentLoaded', ()=>{
-  buildModelGallery();
-  buildCrochetGallery();
-  bindLightbox();
-  initSwipers();
-  setMode('model');
-  handleForm($('#contactForm')); handleForm($('#orderForm'));
-  $('#o-name')?.addEventListener('input', updateWhatsAppLink); updateWhatsAppLink();
-  initGSAP();
-});
-
-// ========== IG EMBED ==========
-function loadInstagramScript(){
-  if($('#ig-embed')){ if(window.instgrm?.Embeds) window.instgrm.Embeds.process(); return; }
-  const s=document.createElement('script'); s.id='ig-embed'; s.async=true; s.src='//www.instagram.com/embed.js';
-  s.onload=()=>{ if(window.instgrm?.Embeds) window.instgrm.Embeds.process(); };
-  document.body.appendChild(s);
-}
-</script>
+  </script>
 </body>
 </html>
